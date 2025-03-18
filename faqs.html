@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindPal - FAQs</title>
+    <style>
+
+        /* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 10%;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+        /* FAQs Page */
+.faq-container {
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.faq-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.faq-list {
+    text-align: left;
+}
+
+.faq-list details {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.faq-list summary {
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #635BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    background: #554AE3;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/mindpal logo.png" alt="MindPal Logo">
+            <span>MindPal</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- FAQs Section -->
+    <main class="faq-container">
+        <h2>FAQs</h2>
+        <div class="faq-list">
+            <details>
+                <summary>How to use MindPal?</summary>
+                <p>MindPal is a platform designed to provide support and resources...</p>
+            </details>
+            <details>
+                <summary>How to use MindPal?</summary>
+                <p>MindPal helps you connect with professionals for support...</p>
+            </details>
+            <details>
+                <summary>How to use MindPal?</summary>
+                <p>You can navigate through different sections to find...</p>
+            </details>
+            <details>
+                <summary>How to use MindPal?</summary>
+                <p>MindPal offers a variety of tools and resources to help you...</p>
+            </details>
+        </div>
+
+        <button class="contact-btn">📩 For More - Contact us</button>
+    </main>
+
+</body>
+</html>

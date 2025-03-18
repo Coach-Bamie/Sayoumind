@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindPal - Hotlines</title>
+    <style>
+
+        /* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 10%;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.profile img {
+            width: 40px;
+            cursor: pointer;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Hotlines Page */
+.hotlines-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px auto;
+    width: 80%;
+}
+
+.hotline {
+    width: 45%;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hotline img {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    object-fit: fill;
+}
+
+.hotline h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.hotline p {
+    color: gray;
+    font-size: 14px;
+}
+
+.hotline a {
+    text-decoration: none;
+    color: rgb(159, 165, 241);
+}
+.call-btn {
+    background: transparent;
+    border: 1px solid blue;
+    color: blue;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.call-btn:hover {
+    background: blue;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/mindpal logo.png" alt="MindPal Logo">
+            <span>MindPal</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dasboard.html" class="active">Dashboard</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <img src="images/icon pal.png" alt="User Profile">
+        </div>
+    </header>
+
+    <!-- Hotlines Section -->
+    <main class="hotlines-container">
+        <div class="hotline">
+            <img src="images/fire service.jpeg" alt="Fire Service">
+            <h3>FUD FIRE SERVICE</h3>
+            <p>Available 24/7</p>
+            <button class="call-btn">
+                <a href="tel:+234703877789">CALL NOW</a>
+            </button>
+        </div>
+
+        <div class="hotline">
+            <img src="images/health.jpeg" alt="Health Director">
+            <h3>HEALTH DIRECTOR</h3>
+            <p>Available 24/7</p>
+            <button class="call-btn"><a href="tel:+2347038537723
+                ">CALL NOW</a>
+            </button>
+        </div>
+
+        <div class="hotline">
+            <img src="images/security.jpeg" alt="Security Supervisor">
+            <h3>SECURITY PATROL SUPERVISOR</h3>
+            <p>Available 24/7</p>
+            <button class="call-btn"><a href="tel:+234806533284
+                ">CALL NOW</a>
+            </button>
+        </div>
+
+        <div class="hotline">
+            <img src="images/sug.jpeg" alt="SUG President">
+            <h3>SUG PRESIDENT</h3>
+            <p>Available 24/7</p>
+            <button class="call-btn"><a href="tel:+2348026143737">CALL NOW</a>
+            </button>
+        </div>
+    </main>
+
+</body>
+</html>
