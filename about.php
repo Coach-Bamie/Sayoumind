@@ -286,7 +286,7 @@ footer {
             </div>
             <div class="team-member">
                 <img src="./assets/images/yamor.png" alt="Team Member 2">
-                <p><strong>Jamilu yamor</strong><br>Back End Dev</p>
+                <p><strong>Jamilu Yusuf Musa (Yamo JR)</strong><br>Back End Dev</p>
             </div>
             <div class="team-member">
                 <img src="./assets/images/khadijah.png" alt="Team Member 3">
