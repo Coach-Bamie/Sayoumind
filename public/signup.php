@@ -170,31 +170,45 @@
         </nav>
     </header>
 
-    <?php
-    // Include the database connection
-    include '../config/mindpal_db.php';
-    session_start();
+<?php 
+include ("../config/mindpal.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Get form data
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+    // Retrieve form inputs
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $conn->real_escape_string($_POST['password']);
+    $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
+    $role = 'user'; // Default role for new users
 
-        // Prepare SQL query to get user info
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch();
+    // Validate passwords match
+    if ($password !== $confirm_password) {
+        echo "<script>alert('Passwords do not match!');</script>";
+    } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        if ($user && password_verify($password, $user['password'])) {
-            // Login successful, start session
-            $_SESSION['username'] = $user['username'];
-            echo "Login successful! Welcome " . $_SESSION['username'];
+        // Check if username or email already exists
+        $check_query = "SELECT * FROM users WHERE name='$username'";
+        $result = $conn->query($check_query);
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Username or email already exists!');</script>";
         } else {
-            echo "Invalid username or password!";
+            // Insert user into the database
+            $insert_query = "INSERT INTO users (name, password, role) VALUES ('$username', '$hashed_password', '$role')";
+            if ($conn->query($insert_query) === TRUE) {
+                echo "<script>alert('Registration successful!'); window.location.href = '../public/signin.php';</script>";
+            } else {
+                echo "<script>alert('Error: " . $conn->error . "');</script>";
+            }
         }
     }
-    ?>
 
+    // Close the database connection
+    $conn->close();
+}
+?>
     <!-- Sign-Up Form -->
     <main class="signup-container">
         <h2>SIGN UP</h2>
@@ -202,9 +216,6 @@
         <form action="" method="POST">
             <div class="input-group">
                 <input type="text" name="username" placeholder="😎 Username" required>
-            </div>
-            <div class="input-group">
-                <input type="email" name="email" placeholder="📧 Email" required>
             </div>
             <div class="input-group">
                 <input type="password" name="password" placeholder="🔒 Password" required>

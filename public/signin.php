@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include '../config/mindpal_db.php';
+include '../config/mindpal.php';
 
 session_start();
 
@@ -10,16 +10,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Prepare SQL query to get user info
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
     $stmt->execute([$username]);
-    $user = $stmt->fetch();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
 
-    if ($user && password_verify($password, $user['password'])) {
-        // Login successful, start session
-        $_SESSION['username'] = $user['username'];
-        echo "Login successful! Welcome " . $_SESSION['username'];
-    } else {
-        echo "Invalid username or password!";
+        if ($user && password_verify($password, $user['password'])) {
+            // Login successful, start session
+            $_SESSION['username'] = $user['name'];
+            echo "Login successful! Welcome " . $_SESSION['username'];
+        } else {
+            echo "Invalid username or password!";
+        }
     }
 }
 ?>
