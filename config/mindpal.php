@@ -1,13 +1,10 @@
 <?php
 $host = "localhost"; 
-$dbname = "mind"; 
+$dbname = "mind_db"; 
 $username = "root";
-$password = "";
-
-
-    
-    $conn = new mysqli($host, $username, $password,  $dbname) ;
+$password = "";  
+    $conn = new mysqli($host, $username, $password, $dbname);
     if ($conn->connect_error) {
-        die("COnnection Error". $conn->connect_error);
+        die("Connection Error". $conn->connect_error);
     }
 ?>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
+    header("Location: ../public/signin.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,11 +190,12 @@ nav ul li a.active {
                 <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
                 <li><a href="../dashboard/message_history.php">History</a></li>
                 <li><a href="../community.php">Community</a></li>
+                <li><a href="../dashboard/logout.php">Log-out</a></li>
             </ul>
             <div class="profile">
             <a href="../dashboard/user_profile.php">
                 <img src="../assets/images/icon_pal.png" alt="User Profile">
-                    <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
+    <?php echo $_SESSION['username'] ?? '$user'; ?></p>
             </a>
         </div>
         </nav>

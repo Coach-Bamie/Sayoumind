@@ -1,3 +1,65 @@
+<?php
+ini_set('session.cookie_lifetime', 86400); // 24 hours
+session_start(); 
+
+
+include '../config/mindpal.php'; 
+
+// Ensure $conn is defined as a PDO connection
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+  $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL
+    header("Location: ../public/signin.php");  // Redirect to login page if not logged in
+    exit();
+}
+
+// Get logged-in user's ID
+$sender_id = $_SESSION['user_id'];
+
+// Define department receiver IDs
+$departments = [
+    'Guidance' => 1, // Example: Guidance department has receiver_id 1
+    'Security' => 2, // Example: Security department has receiver_id 2
+    'Clinic' => 3    // Example: Clinic department has receiver_id 3
+];
+
+// Initialize variables
+$selected_department = '';
+$receiver_id = 0;
+$messages = [];
+
+// Handle department selection and message sending
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // If a department is selected
+    if (isset($_POST['department'])) {
+        $selected_department = $_POST['department'];
+        $receiver_id = $departments[$selected_department];
+
+        // If a message is sent
+        if (!empty($_POST['message'])) {
+            $message = $_POST['message'];
+
+            // Insert the new message into the database
+            $stmt = $conn->prepare("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)");
+            $stmt->execute([$sender_id, $receiver_id, $message]);
+        }
+    }
+}
+
+// Fetch messages for the selected department
+if ($receiver_id > 0) {
+    $stmt = $conn->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY created_at ASC");
+    $stmt->execute([$sender_id, $receiver_id, $receiver_id, $sender_id]);
+    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,113 +292,38 @@
         <div class="back-button">
             <a href="dashboard.html">←</a>
         </div>
-
-        <h2>Select A Department To Chat With</h2>
-        <div class="department-buttons">
-            <button class="dept-btn guide" data-target="Guidance">Guidance & Counseling</button>
-            <button class="dept-btn sec" data-target="security">Security</button>
-            <button class="dept-btn cli" data-target="clinic">Medical</button>
-        </div>
-
-        <!-- Chat Boxes -->
-        <section class="Guidance">
-            <div class="chat-box">
-                <div class="chat-message">
-                    <p>
-                        Thank you for the information. I’m ready to start the coaching. 
-                        I want to focus on developing my emotional intelligence. How can we plan our sessions around that topic?
-                    </p>
-                    <span class="timestamp">09:02 AM</span>
-                </div>
-
-                <p class="typing-status">✎ Counselor is typing...</p>
-
-                <div class="chat-input">
-                    <input type="text" placeholder="Type a new message">
-                    <button class="send-btn">Send</button>
-                </div>
+    <div class="chat-container">
+        <h2>Select a Department to Chat With</h2>
+        <form method="POST" action="">
+            
+            <div class="department-buttons">
+                <button type="submit" name="department" value="Guidance" class="dept-btn guide">Guidance & Counseling</button>
+                <button type="submit" name="department" value="Security" class="dept-btn sec">Security</button>
+                <button type="submit" name="department" value="Clinic" class="dept-btn cli">Medical</button>
             </div>
-        </section>
-        <section class="security">
+        </form>
+
+        <!-- Chat Box -->
+        <?php if ($selected_department): ?>
+            <h3>Chatting with <?php echo $selected_department; ?> Department</h3>
+
             <div class="chat-box">
-                <div class="chat-message">
-                    <p>
-                        Can you provide more details on the security issue you are facing?
-                    </p>
-                    <span class="timestamp">09:15 AM</span>
-                </div>
-
-                <p class="typing-status">✎ Security officer is typing...</p>
-
-                <div class="chat-input">
-                    <input type="text" placeholder="Type a new message">
-                    <button class="send-btn">Send</button>
-                </div>
+                <?php foreach ($messages as $message): ?>
+                    <div class="chat-message">
+                        <p><?php echo htmlspecialchars($message['message']); ?></p>
+                        <span class="timestamp"><?php echo date('h:i A', strtotime($message['created_at'])); ?></span>
+                    </div>
+                <?php endforeach; ?>
             </div>
-        </section>
-        <section class="clinic">
-            <div class="chat-box">
-                <div class="chat-message">
-                    <p>
-                        How can I assist you with your medical concerns today?
-                    </p>
-                    <span class="timestamp">09:30 AM</span>
-                </div>
 
-                <p class="typing-status">✎ Doctor is typing...</p>
-
+            <form method="POST" action="">
                 <div class="chat-input">
-                    <input type="text" placeholder="Type a new message">
-                    <button class="send-btn">Send</button>
+                    <input type="hidden" name="department" value="<?php echo $selected_department; ?>">
+                    <input type="text" name="message" placeholder="Type a new message..." required>
+                    <button type="submit" class="send-btn">Send</button>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-       // Hamburger Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const closeMenu = document.querySelector('.close-menu');
-        const nav = document.querySelector('nav');
-
-        menuToggle.addEventListener('click', () => {
-            nav.style.display = "flex";
-            menuToggle.style.display = "none";
-            closeMenu.style.display = "block";
-        });
-
-        closeMenu.addEventListener('click', () => {
-            nav.style.display = "none";
-            menuToggle.style.display = "block";
-            closeMenu.style.display = "none";
-        });
-
-               // Close menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                nav.style.display = "flex";
-                menuToggle.style.display = "none";
-                closeMenu.style.display = "none";
-            } else {
-                nav.style.display = "none";
-                menuToggle.style.display = "block";
-            }
-        });
-
-        // Select all department buttons
-        const buttons = document.querySelectorAll('.dept-btn');
-        const sections = document.querySelectorAll('.Guidance, .security, .clinic');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Hide all sections first
-                sections.forEach(section => section.style.display = 'none');
-
-                // Get target chat section
-                const target = button.getAttribute('data-target');
-                document.querySelector('.' + target).style.display = 'block';
-            });
-        });
-    </script>
+            </form>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

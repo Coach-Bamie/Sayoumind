@@ -1,31 +1,50 @@
 <?php
 // Include the database connection
 include '../config/mindpal.php';
-
+ini_set('session.cookie_lifetime', 86400);
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    // Prepare SQL query to get user info
+    
+    // Prepare and execute query to check for the user
     $stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
-    $stmt->execute([$username]);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
     $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
+        // Verify password
         if ($user && password_verify($password, $user['password'])) {
-            // Login successful, start session
-            $_SESSION['username'] = $user['name'];
-            echo "Login successful! Welcome " . $_SESSION['username'];
+            $_SESSION['user_id'] = $user['id'];  // Store user ID in session
+            $_SESSION['username'] = $user['name']; // Store username
+            $_SESSION['role'] = $user['role'];     // Store role if needed
+
+            // Check if there's a redirect URL
+            if (isset($_SESSION['redirect_url'])) {
+                $redirect_url = $_SESSION['redirect_url'];
+                unset($_SESSION['redirect_url']);  // Clear redirect URL from session
+                header("Location: $redirect_url"); // Redirect to the stored URL
+            } else {
+                // Redirect to the default dashboard if no redirect URL is set
+                header("Location: /Mindpal/dashboard/dashboard.php");
+            }
+            exit();
         } else {
-            echo "Invalid username or password!";
+            // Invalid credentials
+            echo "<script>alert('Invalid username or password!');</script>";
         }
+    } else {
+        // Username not found
+        echo "<script>alert('Invalid username or password!');</script>";
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -206,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button class="button" type="submit">🔓 Log In</button>
         </form>
-        <p><a href="Change-pass.html">Forgot your password?</a></p>
+        <p><a href="../change_pass.php">Forgot your password?</a></p>
     </main>
     <script>
         // Hamburger Menu Toggle

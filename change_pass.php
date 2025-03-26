@@ -1,3 +1,28 @@
+<? 
+// Reset Password
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $oldPassword = $_POST["oldPassword"];
+    $newPassword = $_POST["newPassword"];
+
+    // Check if the old password matches the current password
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$oldPassword'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Update the password
+        $sql = "UPDATE users SET password = '$newPassword' WHERE username = '$username'";
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('Password changed successfully!');</script>";
+        } else {
+            echo "<script>alert('Error changing password. Please try again.');</script>";
+        }
+    } else {
+        echo "<script>alert('Old password is incorrect. Please try again.');</script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,7 +147,7 @@ button:hover {
 <body>
     <header>
         <div class="logo">
-            <img src="images/mindpal logo.png" alt="MindPal Logo">
+            <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
         </div>
         <nav>
@@ -151,8 +176,10 @@ button:hover {
             <button type="submit">Confirmed Change</button>
         </form>
 
-        <p class="login-link">I remember my password... <a href="#">Log in</a></p>
+        <p class="login-link">I remember my password... <a href="../Mindpal/public/signin.php">Log in</a></p>
     </div>
+
+    
 
     <script>
         // Function to toggle password visibility

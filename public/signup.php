@@ -169,43 +169,39 @@
             </ul>
         </nav>
     </header>
+<?php
+ini_set('session.cookie_lifetime', 86400);
+require '../config/mindpal.php';
 
-<?php 
-include ("../config/mindpal.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-
-    // Retrieve form inputs
     $username = $conn->real_escape_string($_POST['username']);
     $password = $conn->real_escape_string($_POST['password']);
     $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
-    $role = 'user'; // Default role for new users
+    $question = $conn->real_escape_string($_POST['question']);
+    $answer = $conn->real_escape_string($_POST['answer']); 
+    $role = 'user';
 
-    // Validate passwords match
     if ($password !== $confirm_password) {
         echo "<script>alert('Passwords do not match!');</script>";
     } else {
-        // Hash the password
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $hashed_answer = password_hash($answer, PASSWORD_BCRYPT); // Hash answer for security
 
-        // Check if username or email already exists
         $check_query = "SELECT * FROM users WHERE name='$username'";
         $result = $conn->query($check_query);
 
         if ($result->num_rows > 0) {
-            echo "<script>alert('Username or email already exists!');</script>";
+            echo "<script>alert('Username already exists!');</script>";
         } else {
-            // Insert user into the database
-            $insert_query = "INSERT INTO users (name, password, role) VALUES ('$username', '$hashed_password', '$role')";
+            $insert_query = "INSERT INTO users (name, password, role, question, answer) VALUES ('$username', '$hashed_password', '$role', '$question', '$hashed_answer')";
+
             if ($conn->query($insert_query) === TRUE) {
                 echo "<script>alert('Registration successful!'); window.location.href = '../public/signin.php';</script>";
             } else {
-                echo "<script>alert('Error: " . $conn->error . "');</script>";
+                echo "<script>alert('Error: " . addslashes($conn->error) . "');</script>";
             }
         }
     }
-
-    // Close the database connection
     $conn->close();
 }
 ?>
@@ -216,6 +212,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="POST">
             <div class="input-group">
                 <input type="text" name="username" placeholder="😎 Username" required>
+            </div>
+            <div class="input-group">
+                <select name="question" required>
+                <option value="">Select a security question</option>
+                <option value="What is your pet's name?">What is your pet's name?</option>
+                <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                <option value="What city were you born in?">What city were you born in?</option>
+                </select>
+                <input type="text" name="answer" placeholder="Your answer" required>
             </div>
             <div class="input-group">
                 <input type="password" name="password" placeholder="🔒 Password" required>
