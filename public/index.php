@@ -5,17 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - Welcome</title>
     <style>
-        /* General Styles */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+        /* General Styles */
+body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
     text-align: center;
     background-color: #ffffff;
 }
 
 header {
             display: flex;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
             background: #ffffff;
@@ -78,7 +88,7 @@ header {
         }
 
         /* Responsive Navigation */
-        @media screen and (max-width: 768px) {
+        @media (max-width: 768px) {
             .nav {
                 display: none;
                 flex-direction: column;
@@ -102,6 +112,64 @@ header {
             .menu-toggle {
                 display: block;
                 margin-left: 200px;
+            }
+
+            footer {
+                background: #080808;
+                padding: 20px;
+                margin-top: 50px;
+                width: 100%;
+            }
+
+            .footer-content {
+                display: grid;
+                grid-template-columns: 1fr;
+                align-items: center;
+                padding: 0 10%;
+            }
+
+            .footer-content span {
+                color: red;
+            }
+
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .footer-logo img {
+                width: 30px;
+                margin-right: 10px;
+            }
+
+            .newsletter input {
+                padding: 10px;
+                width: 100px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .newsletter button {
+                background: #6c63ff;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin-left: 5px;
+            }
+
+            .footer-nav {
+                margin-top: 10px;
+                color: white;
+            }
+
+            .footer-nav a {
+                margin: 0 10px;
+                color: #fcf9f9;
+                text-decoration: none;
+                font-size: 16px;
             }
         }
 
@@ -146,7 +214,7 @@ header {
 }
 
 .hero img {
-    width: 60%;
+    width: 50%;
     margin-top: 20px;
 }
 
@@ -169,10 +237,9 @@ footer {
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10%;
+    display: grid;
+    grid-template-columns: 100px auto;
+    padding: 0px 10px;
 }
 
 .footer-content span {
@@ -181,28 +248,29 @@ footer {
 
 .footer-logo {
     display: flex;
-    align-items: center;
+    width: 50px;
     font-size: 20px;
     font-weight: bold;
 }
 
 .footer-logo img {
     width: 30px;
-    margin-right: 10px;
 }
 
 .newsletter input {
     padding: 10px;
-    width: 100px;
+    width: 50px;
+    height: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 .newsletter button {
+    height: 30px;
     background: #6c63ff;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 10px;
     border-radius: 5px;
     margin-left: 5px;
 }
