@@ -70,6 +70,7 @@ header {
         /* Hamburger Menu */
         .menu-toggle {
             display: none;
+            margin-right: 150px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -78,6 +79,7 @@ header {
 
         .close-menu {
             display: none;
+            margin-right: 50px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -112,64 +114,6 @@ header {
             .menu-toggle {
                 display: block;
                 margin-left: 200px;
-            }
-
-            footer {
-                background: #080808;
-                padding: 20px;
-                margin-top: 50px;
-                width: 100%;
-            }
-
-            .footer-content {
-                display: grid;
-                grid-template-columns: 1fr;
-                align-items: center;
-                padding: 0 10%;
-            }
-
-            .footer-content span {
-                color: red;
-            }
-
-            .footer-logo {
-                display: flex;
-                align-items: center;
-                font-size: 20px;
-                font-weight: bold;
-            }
-
-            .footer-logo img {
-                width: 30px;
-                margin-right: 10px;
-            }
-
-            .newsletter input {
-                padding: 10px;
-                width: 100px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-
-            .newsletter button {
-                background: #6c63ff;
-                color: white;
-                border: none;
-                padding: 10px 15px;
-                border-radius: 5px;
-                margin-left: 5px;
-            }
-
-            .footer-nav {
-                margin-top: 10px;
-                color: white;
-            }
-
-            .footer-nav a {
-                margin: 0 10px;
-                color: #fcf9f9;
-                text-decoration: none;
-                font-size: 16px;
             }
         }
 
@@ -214,7 +158,7 @@ header {
 }
 
 .hero img {
-    width: 50%;
+    width: 60%;
     margin-top: 20px;
 }
 
@@ -229,53 +173,80 @@ header {
     margin-top: 10px;
 }
 
+
+
 /* Footer */
 footer {
+    display: grid;
+    grid-template-columns: 1fr;
     background: #080808;
     padding: 20px;
-    margin-top: 40px;
+    margin: 0;
+    height: 150px;
+    width: 100%;
+    text-align: center;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: 100px auto;
-    padding: 0px 10px;
+    grid-template-columns: 1fr;
+    text-align: center;
 }
 
-.footer-content span {
-    color: white;
+.footer-content .footer-logo {
+    display: flex;
+    position: relative;
+    margin: auto auto;
 }
 
 .footer-logo {
     display: flex;
-    width: 50px;
+    align-items: center;
     font-size: 20px;
     font-weight: bold;
 }
 
 .footer-logo img {
     width: 30px;
+    margin-right: 10px;
+}
+
+ .footer-content span {
+    color: white;
+}
+
+.footer-content .newsletter {
+    margin: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
 }
 
 .newsletter input {
     padding: 10px;
-    width: 50px;
-    height: 30px;
+    width: 100px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 .newsletter button {
-    height: 30px;
+    cursor: pointer;
     background: #6c63ff;
     color: white;
     border: none;
-    padding: 10px 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     margin-left: 5px;
 }
 
+
+.footer-content .newsletter input {
+    width: 200px;
+    height: 35px;
+}
+
 .footer-nav {
+    margin: auto 0px;
     margin-top: 10px;
     color: white;
 }
@@ -286,7 +257,6 @@ footer {
     text-decoration: none;
     font-size: 16px;
 }
-
     </style>
 </head>
 <body>
@@ -333,9 +303,9 @@ footer {
             </div>
         </div>
         <nav class="footer-nav">
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="faqs.html">FAQs</a>
+            <a href="../about.php">About Us</a>
+            <a href="../public/contact.php">Contact Us</a>
+            <a href="../public/faqs.php">FAQs</a>
         </nav>
     </footer>
     <script>

@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - About Us</title>
     <style>
-        /* About Us Page */
-
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+        /* General Styles */
+body {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
       /* About Us Page */
       header {
             display: flex;
@@ -73,8 +88,8 @@
         }
 
         /* Responsive Navigation */
-        @media screen and (max-width: 768px) {
-            nav {
+        @media (max-width: 768px) {
+            header nav {
                 display: none;
                 flex-direction: column;
                 background: white;
@@ -97,20 +112,6 @@
             .menu-toggle {
                 display: block;
             }
-
-            .about-text .one {
-            display: grid;
-            margin: 50px 0px;
-            grid-template-columns: 1fr;
-            border-radius: 20px;
-            }
-                .one .text p {
-                display: block;
-            }
-
-            .about-text .text {
-                display: block;
-            }
         }
 
             .show-menu {
@@ -128,26 +129,39 @@
     margin: 30px 0;
 }
 
+.about-container p {
+    font-size: 25px;
+    font-style: italic;
+    margin: 50px 50px;
+}
+
 .about-text {
+    border-radius: 10px;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: inherit;
 }
 
 .about-text .one {
+    background-color: lightcyan;
     display: grid;
-    margin: 50px 10px;
-    grid-template-columns: 1fr 1fr;
+    margin: 100px 10px;
+    grid-template-columns: 1fr;
     border-radius: 20px;
 }
 
-.about-text .one .img {
-    border-radius: 50px;
+.about-text .one .img img {
+    background: inherit;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid lightpink;
     cursor: pointer;
 }
 
 .about-text .one p {
-    font-size: 20px;
+    font-size: 25px;
     font-style: italic;
+    margin: 50px 50px;
 }
 
 /* Team Section */
@@ -163,6 +177,12 @@
     width: 180px;
 }
 
+.team-container .team-member p {
+    font-size: 15px;
+    font-style: italic;
+    width: 100%;
+}
+
 .team-member img {
     width: 100%;
     border-radius: 10px;
@@ -170,39 +190,85 @@
 
 /* Footer */
 footer {
-    background: black;
-    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #080808;
     padding: 20px;
+    margin: 0;
+    height: 150px;
+    width: 100%;
     text-align: center;
 }
 
 .footer-content {
-    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
 }
 
-.footer-content input {
-    padding: 8px;
-    margin-top: 5px;
+.footer-content .footer-logo {
+    display: flex;
+    position: relative;
+    margin: auto auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+ .footer-content span {
+    color: white;
+}
+
+.footer-content .newsletter {
+    margin: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: none;
 }
 
-.footer-content button {
-    border-radius: 10px;
-    height: 35px;
+.newsletter button {
     cursor: pointer;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
-.footer-content button:hover {
-    background-color: black;
-    color: white;
-    border: 1px solid red;
+
+.footer-content .newsletter input {
+    width: 200px;
+    height: 35px;
 }
 
-.footer-links a {
+.footer-nav {
+    margin: auto 0px;
+    margin-top: 10px;
     color: white;
+}
+
+.footer-nav a {
     margin: 0 10px;
+    color: #fcf9f9;
     text-decoration: none;
+    font-size: 16px;
 }
 
     </style>
@@ -233,7 +299,7 @@ footer {
             <div class="about-text">
                 <div class="one">
                     <div class="text">
-                        <h3>Innovation</h3>
+                        <h2>Innovation</h2>
                     <p>
                         Our pioneering research integrates advanced AI algorithms with neuroscience, creating tools that enhance well-being and productivity.
                     </p>
@@ -241,15 +307,15 @@ footer {
                     <div class="img">
                         <img src="./assets/images/iInnovation.jpeg" alt="">
                     </div>
-                </div>
+                </div><hr>
 
                 <div class="one">
-                     <div class="img">
-                        <img src="./assets/images/Customer-Centric.jpeg" alt="">
-                    </div>
                     <div class="text">
-                        <h3>Customer-Centric</h3>
+                        <h2>Customer-Centric</h2>
                 <p>We are committed to empowering our clients by providing tailored solutions that foster growth and innovation.</p>
+                    </div>
+                    <div class="img">
+                        <img src="./assets/images/Customer-Centric.jpeg" alt="">
                     </div>
                 </div>
 
@@ -265,12 +331,12 @@ footer {
                 </div>
                         
                 <div class="one">
-                    <div class="img">
-                        <img src="./assets/images/Integrity.jpeg" alt="">
-                    </div>
                     <div class="text">
                        <h3>Integrity</h3>
                 <p>MindPal's built on values of transparency and honesty, ensuring our clients receive clear insights and ethical solutions.</p>
+                    </div>
+                    <div class="img">
+                        <img src="./assets/images/Integrity.jpeg" alt="">
                     </div>
                 </div>
 
@@ -306,16 +372,20 @@ footer {
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <h3>MindPal</h3>
-            <p>Subscribe to our newsletter</p>
-            <input type="email" placeholder="📩 Input your email">
-            <button>Subscribe</button>
+            <div class="footer-logo">
+                <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
+                <span>MindPal</span>
+            </div>
+            <div class="newsletter">
+                <input type="email" placeholder="Input your email">
+                <button>Subscribe</button>
+            </div>
         </div>
-        <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="./public/contact.php">Contact Us</a>
-            <a href="./public/faqs.php">FAQs</a>
-        </div>
+        <nav class="footer-nav">
+            <a href="../about.php">About Us</a>
+            <a href="../public/contact.php">Contact Us</a>
+            <a href="../public/faqs.php">FAQs</a>
+        </nav>
     </footer>
     <script>
         // Hamburger Menu Toggle

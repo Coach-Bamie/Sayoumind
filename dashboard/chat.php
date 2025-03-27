@@ -325,5 +325,50 @@ if ($receiver_id > 0) {
             </form>
         <?php endif; ?>
     </div>
+    <script>
+       // Hamburger Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.style.display = "flex";
+            menuToggle.style.display = "none";
+            closeMenu.style.display = "block";
+        });
+
+        closeMenu.addEventListener('click', () => {
+            nav.style.display = "none";
+            menuToggle.style.display = "block";
+            closeMenu.style.display = "none";
+        });
+
+               // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                nav.style.display = "flex";
+                menuToggle.style.display = "none";
+                closeMenu.style.display = "none";
+            } else {
+                nav.style.display = "none";
+                menuToggle.style.display = "block";
+            }
+        });
+
+        // Select all department buttons
+        const buttons = document.querySelectorAll('.dept-btn');
+        const sections = document.querySelectorAll('.Guidance, .security, .clinic');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Hide all sections first
+                sections.forEach(section => section.style.display = 'none');
+
+                // Get target chat section
+                const target = button.getAttribute('data-target');
+                document.querySelector('.' + target).style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>

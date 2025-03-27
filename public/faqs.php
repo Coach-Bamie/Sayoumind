@@ -167,6 +167,12 @@ header {
         <nav class="nav">
             <ul>
                 <li><a href="../public/index.php">Home</a></li>
+                <li>
+                    <a href="../dashboard/dashboard.php">Dashboard</a>
+                </li>
+                <li>
+                    <a href="../about.php">About</a>
+                </li>
                 <li><a href="../community.php">Community</a></li>
                 <li><a href="../public/contact.php">Contact Us</a></li>
             </ul>

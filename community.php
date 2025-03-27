@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
+    exit();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +65,48 @@ body {
 }
 
 /* Navigation */
+header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -86,7 +138,67 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            margin-left: 150px;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
 
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 60px;
+                right: 10%;
+                width: 200px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-bottom: 15px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+
+.profile img {
+    margin-left: 50px;
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile a {
+    text-decoration: none;
+    color: black;
+}
 /* Hero Section */
 .hero {
     padding: 40px;
@@ -181,22 +293,25 @@ body {
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="images/mindpal logo.png" alt="MindPal Logo">
+       <div class="logo">
+            <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
+            <button class="menu-toggle">☰</button>
+            <button class="close-menu">✖</button>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Resources</a></li>
+                <li><a href="./dashboard/dashboard.php">Dashboard</a></li>
+                <li><a href="./about.php">About</a></li>
+                <li><a href="./public/contact.php">Contact Us</a></li>
             </ul>
-        </nav>
-            <div class="icons">
-                <span>🔔</span>
-                <span>👤</span>
-            </div>
+            <div class="profile">
+            <a href="./dashboard/user_profile.php">
+                <img src="./assets/images/icon_pal.png" alt="User Profile">
+   <?php echo $_SESSION['username'] ?? '$user'; ?></p>
+            </a>
         </div>
+        </nav>
     </header>
 
     <main>
@@ -238,5 +353,50 @@ body {
             </div>
         </section>
     </main>
+    <script>
+       // Hamburger Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.style.display = "flex";
+            menuToggle.style.display = "none";
+            closeMenu.style.display = "block";
+        });
+
+        closeMenu.addEventListener('click', () => {
+            nav.style.display = "none";
+            menuToggle.style.display = "block";
+            closeMenu.style.display = "none";
+        });
+
+               // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                nav.style.display = "flex";
+                menuToggle.style.display = "none";
+                closeMenu.style.display = "none";
+            } else {
+                nav.style.display = "none";
+                menuToggle.style.display = "block";
+            }
+        });
+
+        // Select all department buttons
+        const buttons = document.querySelectorAll('.dept-btn');
+        const sections = document.querySelectorAll('.Guidance, .security, .clinic');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Hide all sections first
+                sections.forEach(section => section.style.display = 'none');
+
+                // Get target chat section
+                const target = button.getAttribute('data-target');
+                document.querySelector('.' + target).style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -119,16 +119,23 @@
         }
 
         .input-group {
-            margin: 15px 0;
+            margin: 15px 10px;
         }
 
         .input-group input {
-            width: 100%;
+            width: 150px;
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             outline: none;
+        }
+
+        .input-group select {
+            height: 40px;
+            width: 170px;
+            border: 1px solid lightgray;
+            margin: 10px 0px;
         }
 
         .button {
@@ -164,15 +171,12 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="../public/index.php">Home</a></li>
+                <li><a href="../public/contact.php">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 <?php
-ini_set('session.cookie_lifetime', 86400);
-require '../config/mindpal.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $conn->real_escape_string($_POST['password']);

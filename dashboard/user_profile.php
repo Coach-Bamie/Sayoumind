@@ -222,6 +222,9 @@ if (!isset($_SESSION['username'])) {
             <ul>
                 <li><a href="../dashboard/dashboard.php">Dashboard</a></li>
                 <li><a href="../community.php">Community</a></li>
+                <li>
+                    <a href="../about.php">About</a>
+                </li>
                 <li><a href="../public/contact.php">Contact Us</a></li>
             </ul>
         </div>
