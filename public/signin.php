@@ -207,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="../public/index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
             </ul>
         </nav>
     </header>
