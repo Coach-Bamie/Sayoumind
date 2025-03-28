@@ -264,7 +264,7 @@ footer {
     <!-- Header -->
     <header>
         <div class="logo">
-            <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
+            <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
             <button class="menu-toggle">☰</button>
             <button class="close-menu">✖</button>
@@ -272,12 +272,12 @@ footer {
         <nav class="nav">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="../about.php">About Us</a></li>
-                <li><a href="faqs.php">FAQs</a></li>
+                <li><a href="./about.php">About Us</a></li>
+                <li><a href="./public/faqs.php">FAQs</a></li>
             </ul>
             <div class="auth-buttons">
-            <a href="../public/signup.php" class="btn-light">Sign Up</a>
-            <a href="../public/signin.php" class="btn-dark">Login</a>
+            <a href="./public/signup.php" class="btn-light">Sign Up</a>
+            <a href="./public/signin.php" class="btn-dark">Login</a>
         </div>
         </nav>
     </header>
@@ -285,7 +285,7 @@ footer {
     <!-- Hero Section -->
     <main class="hero">
         <h1>Welcome to MindPal</h1>
-        <img src="../assets/images/mindpal_cover.jpg" alt="Illustration">
+        <img src="./assets/images/mindpal_cover.jpg" alt="Illustration">
         <p>Your Trusted Companion</p>
         <a href="../public/signin.php" class="btn-primary">Get Started</a>
     </main>
@@ -294,7 +294,7 @@ footer {
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
+                <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
                 <span>MindPal</span>
             </div>
             <div class="newsletter">

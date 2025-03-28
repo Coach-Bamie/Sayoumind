@@ -1,3 +1,39 @@
+<?php
+ini_set('session.cookie_lifetime', 86400);
+require '../config/mindpal.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $conn->real_escape_string($_POST['password']);
+    $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
+    $question = $conn->real_escape_string($_POST['question']);
+    $answer = $conn->real_escape_string($_POST['answer']); 
+    $role = 'user';
+
+    if ($password !== $confirm_password) {
+        echo "<script>alert('Passwords do not match!');</script>";
+    } else {
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $hashed_answer = password_hash($answer, PASSWORD_BCRYPT); // Hash answer for security
+
+        $check_query = "SELECT * FROM users WHERE name='$username'";
+        $result = $conn->query($check_query);
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Username already exists!');</script>";
+        } else {
+            $insert_query = "INSERT INTO users (name, password, role, question, answer) VALUES ('$username', '$hashed_password', '$role', '$question', '$hashed_answer')";
+
+            if ($conn->query($insert_query) === TRUE) {
+                echo "<script>alert('Registration successful!'); window.location.href = '../public/signin.php';</script>";
+            } else {
+                echo "<script>alert('Error: " . addslashes($conn->error) . "');</script>";
+            }
+        }
+    }
+    $conn->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,39 +212,6 @@
             </ul>
         </nav>
     </header>
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $conn->real_escape_string($_POST['username']);
-    $password = $conn->real_escape_string($_POST['password']);
-    $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
-    $question = $conn->real_escape_string($_POST['question']);
-    $answer = $conn->real_escape_string($_POST['answer']); 
-    $role = 'user';
-
-    if ($password !== $confirm_password) {
-        echo "<script>alert('Passwords do not match!');</script>";
-    } else {
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $hashed_answer = password_hash($answer, PASSWORD_BCRYPT); // Hash answer for security
-
-        $check_query = "SELECT * FROM users WHERE name='$username'";
-        $result = $conn->query($check_query);
-
-        if ($result->num_rows > 0) {
-            echo "<script>alert('Username already exists!');</script>";
-        } else {
-            $insert_query = "INSERT INTO users (name, password, role, question, answer) VALUES ('$username', '$hashed_password', '$role', '$question', '$hashed_answer')";
-
-            if ($conn->query($insert_query) === TRUE) {
-                echo "<script>alert('Registration successful!'); window.location.href = '../public/signin.php';</script>";
-            } else {
-                echo "<script>alert('Error: " . addslashes($conn->error) . "');</script>";
-            }
-        }
-    }
-    $conn->close();
-}
-?>
     <!-- Sign-Up Form -->
     <main class="signup-container">
         <h2>SIGN UP</h2>
