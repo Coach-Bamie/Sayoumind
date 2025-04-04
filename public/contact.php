@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - Contact Us</title>
     <style>
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
 /* Header */
 header {
             display: flex;
@@ -199,7 +203,6 @@ textarea {
         </div>
         </nav>
     </header>
-
     <!-- Contact Us Section -->
     <main class="contact-container">
         <h2>Need Assistance?</h2>

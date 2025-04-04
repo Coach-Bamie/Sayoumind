@@ -9,15 +9,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
         /* General Styles */
 body {
-    box-sizing: border-box;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     text-align: center;
     background-color: #ffffff;
@@ -70,7 +67,6 @@ header {
         /* Hamburger Menu */
         .menu-toggle {
             display: none;
-            margin-right: 150px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -79,7 +75,6 @@ header {
 
         .close-menu {
             display: none;
-            margin-right: 50px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -113,7 +108,7 @@ header {
 
             .menu-toggle {
                 display: block;
-                margin-left: 200px;
+                margin-left: 150px;
             }
         }
 

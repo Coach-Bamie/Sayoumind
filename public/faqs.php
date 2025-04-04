@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - FAQs</title>
     <style>
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
         /* Header */
 body {
     font-family: Arial, sans-serif;
@@ -102,13 +106,13 @@ header {
 
             .menu-toggle {
                 display: block;
-                margin-left: 200px;
+                margin-left: 150px;
             }
         }
 
         /* FAQs Page */
 .faq-container {
-    width: 50%;
+    width: 300px;
     margin: 50px auto;
     text-align: center;
 }

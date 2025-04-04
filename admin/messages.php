@@ -7,18 +7,17 @@ if (!isset($_SESSION['username'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Dashboard</title>
-    <style>
-        /* Base Styles (for Desktop) */
-        
-        /* Dashboard Styles */
-        /* General Styling */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages</title>
+  <style>
+    * {
+            margin: 0;
+            padding: 0;box-sizing: border-box;
+        }
 /* Header */
         header {
             display: flex;
@@ -110,58 +109,7 @@ if (!isset($_SESSION['username'])) {
             }
         }
 
-/* Dashboard Styles */
-.dashboard {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.dashboard h1 {
-    font-size: 28px;
-    color: #333;
-}
-
-.welcome {
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.subtext {
-    font-size: 16px;
-    color: gray;
-    font-style: italic;
-    margin-bottom: 20px;
-}
-
-/* Quick Actions */
-.quick-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.btn-action {
-    display: block;
-    width: 300px;
-    background: #add8e6;
-    color: black;
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out;
-}
-
-.btn-action:hover {
-    background: #87ceeb;
-}
-
-/* Profile Icon */
-.profile img {
+        .profile img {
     margin-left: 50px;
     width: 40px;
     cursor: pointer;
@@ -174,16 +122,72 @@ if (!isset($_SESSION['username'])) {
     color: black;
 }
 
-/* Active Link */
-nav ul li a.active {
-    font-weight: bold;
-    text-decoration: underline;
+.h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-    </style>
+}
+        .chat-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .chat {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s ease;
+        }
+        .chat:hover {
+            background-color:rgb(103, 102, 102);
+            cursor: pointer;
+        }
+        .chat:last-child {
+            border-bottom: none;
+        }
+        .chat img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #636ae8;
+        }
+        .chat-info {
+            flex-grow: 1;
+        }
+        .chat-info h4 {
+            margin: 0;
+            font-size: 16px;
+            color: black;
+        }
+        .chat-info p {
+            margin: 5px 0 0;
+            color: black;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .time {
+            font-size: 12px;
+            color: #888;
+        }
+        .unread {
+            background-color: #636ae8;
+            color: white;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            margin-left: 10px;
+        }
+  </style>
 </head>
 <body>
-    <header>
+      <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
@@ -192,7 +196,7 @@ nav ul li a.active {
         <button class="close-menu">✖</button>
         <nav>
             <ul>
-                <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
+                <li><a href="./admin_dashboard.php" class="active">Dashboard</a></li>
                 <li><a href="../dashboard/message_history.php">History</a></li>
                 <li>
                     <a href="../about.php">About</a>
@@ -207,17 +211,20 @@ nav ul li a.active {
         </div>
         </nav>
     </header>
-    <!-- Dashboard Content -->
-    <main class="dashboard">
-        <h1>Admin MindPal Dashboard</h1>
-        <p class="welcome">Welcome, <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
-        <div class="quick-actions">
-            <a href="#" class="btn-action">@Department</a>
-            <a href="./messages.php" class="btn-action">Messages</a>
+    <h1 class="h1">Admin ChatList</h1>
+    <div class="chat-container">
+        <div class="chat" id="chat">
+            <img src="../assets/images/icon_pal.png" alt="User 1">
+            <div class="chat-info">
+                <h4>iliyasu</h4>
+                <p>Hello good morning</p>
+            </div>
+            <span class="time">10:26 AM</span>
+            <span class="unread">1</span>
         </div>
-    </main>
+    </div>
     <script>
-        // Hamburger Menu Toggle
+       // Hamburger Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const closeMenu = document.querySelector('.close-menu');
         const nav = document.querySelector('nav');
@@ -245,7 +252,11 @@ nav ul li a.active {
                 menuToggle.style.display = "block";
             }
         });
+
+        let reply = document.getElementById('chat');
+        reply.addEventListener('click', () => {
+          window.location.href="../dashboard/chatroom.php";
+        });
     </script>
 </body>
-
 </html>

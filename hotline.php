@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +21,8 @@
 }
         /* General Styles */
 body {
-    box-sizing: border-box;
-    overflow-x: hidden;
     font-family: Arial, sans-serif;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     text-align: center;
     background-color: #ffffff;
@@ -88,7 +95,7 @@ header {
 
         /* Responsive Navigation */
         @media screen and (max-width: 768px) {
-            nav {
+           .nav {
                 display: none;
                 flex-direction: column;
                 background: white;
@@ -113,35 +120,39 @@ header {
             }
         }
 
-.profile img {
+    .profile img {
             width: 40px;
             cursor: pointer;
             height: 40px;
             border-radius: 50%;
         }
 
+    .profile a {
+            text-decoration: none;
+            color: black;
+        }
+
         /* Hotlines Page */
 .hotlines-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: auto;
-    width: 100%;
+    display: block;
+    width: 300px;
+    margin: 50px auto;
 }
 
 .hotline {
-    width: 400px;
+    display: inline-block;
+    width: 300px;
+    margin: 70px auto;
     height: 400px;
     background: white;
     border-radius: 10px;
-    margin: 50px auto;
-    padding: 15px;
     text-align: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 .hotline img {
-    width: 100%;
+    margin: 30px auto;
+    width: 200px;
     height: 200px;
     border-radius: 5px;
     object-fit: fill;
@@ -177,6 +188,89 @@ header {
     color: white;
 }
 
+/* Footer */
+footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #080808;
+    padding: 20px;
+    margin: 0;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.footer-content .footer-logo {
+    display: flex;
+    position: relative;
+    margin: auto auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+ .footer-content span {
+    color: white;
+}
+
+.footer-content .newsletter {
+    margin: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    cursor: pointer;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+.footer-content .newsletter input {
+    width: 200px;
+    height: 35px;
+}
+
+.footer-nav {
+    margin: auto 0px;
+    margin-top: 10px;
+    color: white;
+}
+
+.footer-nav a {
+    margin: 0 10px;
+    color: #fcf9f9;
+    text-decoration: none;
+    font-size: 16px;
+}
+
     </style>
 </head>
 <body>
@@ -189,7 +283,7 @@ header {
             <button class="menu-toggle">☰</button>
         <button class="close-menu">✖</button>
         </div>
-        <nav>
+        <nav class="nav">
             <ul>
                 <li><a href="./dashboard/dashboard.php" class="active">Dashboard</a></li>
                 <li><a href="./community.php">Community</a></li>
@@ -241,6 +335,23 @@ header {
             </button>
         </div>
     </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
+                <span>MindPal</span>
+            </div>
+            <div class="newsletter">
+                <input type="email" placeholder="Input your email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <nav class="footer-nav">
+            <a href="../about.php">About Us</a>
+            <a href="../public/contact.php">Contact Us</a>
+            <a href="../public/faqs.php">FAQs</a>
+        </nav>
+    </footer>
    <script>
      // Hamburger Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');

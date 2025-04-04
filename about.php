@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - About Us</title>
     <style>
-       * {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
         /* General Styles */
 body {
-    box-sizing: border-box;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     text-align: center;
     background-color: #ffffff;
@@ -119,20 +116,20 @@ body {
             }
 
 .about-container {
-    width: 80%;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 
 .about-container h2 {
     font-size: 28px;
-    margin: 30px 0;
+    text-align: center;
 }
 
 .about-container p {
     font-size: 25px;
     font-style: italic;
-    margin: 50px 50px;
+    text-align: center;
 }
 
 .about-text {
@@ -151,7 +148,7 @@ body {
 
 .about-text .one .img img {
     background: inherit;
-    height: 200px;
+    height: 150px;
     margin-bottom: 20px;
     border-radius: 10px;
     border: 1px solid lightpink;
@@ -194,7 +191,7 @@ footer {
     grid-template-columns: 1fr;
     background: #080808;
     padding: 20px;
-    margin: 0;
+    margin-top: 20px;
     height: 150px;
     width: 100%;
     text-align: center;
@@ -295,7 +292,7 @@ footer {
     <!-- About Us Section -->
     <main class="about-container">
         <h2>About us</h2>
-        <p>At MindPal, we strive to push the boundaries of cognitive enhancement through innovative technology and personalized solutions.</p>
+        <p style="font-size: 20px">At MindPal, we strive to push the boundaries of cognitive enhancement through innovative technology and personalized solutions.</p>
             <div class="about-text">
                 <div class="one">
                     <div class="text">

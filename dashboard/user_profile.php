@@ -14,7 +14,11 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - Settings</title>
    <style>
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
     /* Header */
  header {
             display: flex;

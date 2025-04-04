@@ -16,50 +16,14 @@ if (!isset($_SESSION['username'])) {
     <title>MindPal Community</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    padding: 15px 10%;
-    border-bottom: 1px solid #ddd;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.logo img {
-    width: 40px;
-    margin-right: 10px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-}
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+} 
         /* General Reset */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #f9f9f9;
     text-align: center;
 }
@@ -67,6 +31,7 @@ body {
 /* Navigation */
 header {
             display: flex;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
             background: #ffffff;
@@ -107,41 +72,10 @@ header {
             color: #333;
             font-size: 18px;
         }
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
-    background: white;
-    border-bottom: 1px solid #ddd;
-}
 
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-}
-
-.navbar nav .active {
-    font-weight: bold;
-    color: #5A5AD1;
-}
-
-.icons span {
-    margin-left: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
         /* Hamburger Menu */
         .menu-toggle {
             display: none;
-            margin-left: 150px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -160,8 +94,8 @@ header {
         }
 
         /* Responsive Navigation */
-        @media screen and (max-width: 768px) {
-            nav {
+        @media (max-width: 768px) {
+            .nav {
                 display: none;
                 flex-direction: column;
                 background: white;
@@ -183,9 +117,9 @@ header {
 
             .menu-toggle {
                 display: block;
+                margin-left: 150px;
             }
         }
-
 
 .profile img {
     margin-left: 50px;
@@ -212,7 +146,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     padding: 20px;
-    max-width: 800px;
+    width: 300px;
     margin: auto;
 }
 
@@ -283,32 +217,116 @@ header {
     background: white;
     padding: 15px;
     margin: 10px auto;
-    width: 60%;
+    width: 300px;
     text-align: left;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Footer */
+footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: #080808;
+    padding: 20px;
+    margin: 0;
+    height: 150px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.footer-content .footer-logo {
+    display: flex;
+    position: relative;
+    margin: auto auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-logo img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+ .footer-content span {
+    color: white;
+}
+
+.footer-content .newsletter {
+    margin: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    cursor: pointer;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+.footer-content .newsletter input {
+    width: 200px;
+    height: 35px;
+}
+
+.footer-nav {
+    margin: auto 0px;
+    margin-top: 10px;
+    color: white;
+}
+
+.footer-nav a {
+    margin: 0 10px;
+    color: #fcf9f9;
+    text-decoration: none;
+    font-size: 16px;
+}
+
     </style>
 </head>
 <body>
-    <header>
-       <div class="logo">
+   <header>
+        <div class="logo">
             <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
             <button class="menu-toggle">☰</button>
             <button class="close-menu">✖</button>
         </div>
-        <nav>
+        <nav class="nav">
             <ul>
                 <li><a href="./dashboard/dashboard.php">Dashboard</a></li>
-                <li><a href="./about.php">About</a></li>
+                <li><a href="./about.php">About Us</a></li>
                 <li><a href="./public/contact.php">Contact Us</a></li>
+                <li><a href="./public/faqs.php">Profile</a></li>
             </ul>
-            <div class="profile">
+           <div class="profile">
             <a href="./dashboard/user_profile.php">
                 <img src="./assets/images/icon_pal.png" alt="User Profile">
-   <?php echo $_SESSION['username'] ?? '$user'; ?></p>
+    <?php echo $_SESSION['username'] ?? '$user'; ?></p>
             </a>
         </div>
         </nav>
@@ -318,16 +336,6 @@ header {
         <section class="hero">
             <h1>Stronger Together: Building Better Communities Through Networking and Support</h1>
         </section>
-
-        <section class="topics">
-            <div class="topic-card"> <h3>AI Trends</h3> <p>Latest post: Oct 3, 2023<br>Developing AI advancements</p> </div>
-            <div class="topic-card"> <h3>Climate Change</h3> <p>Latest post: Sep 30, 2023<br>Exploring climate change impacts</p> </div>
-            <div class="topic-card"> <h3>Electric Cars</h3> <p>Latest post: Oct 1, 2023<br>The future of electric vehicles</p> </div>
-            <div class="topic-card"> <h3>Wellness Guide</h3> <p>Latest post: Sep 25, 2023<br>Healthy living tips</p> </div>
-            <div class="topic-card"> <h3>Blockchain Basics</h3> <p>Latest post: Oct 2, 2023<br>Understanding blockchain technology</p> </div>
-            <div class="topic-card"> <h3>Web Design</h3> <p>Latest post: Sep 29, 2023<br>New trends in web design</p> </div>
-        </section>
-
         <section class="conversation">
             <h2>Join the Conversation</h2>
             <p>Share your insights and connect with like-minded individuals. Your thoughts matter!</p>
@@ -353,6 +361,24 @@ header {
             </div>
         </section>
     </main>
+     <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
+                <span>MindPal</span>
+            </div>
+            <div class="newsletter">
+                <input type="email" placeholder="Input your email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <nav class="footer-nav">
+            <a href="../about.php">About Us</a>
+            <a href="../public/contact.php">Contact Us</a>
+            <a href="../public/faqs.php">FAQs</a>
+        </nav>
+    </footer>
     <script>
        // Hamburger Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');

@@ -53,6 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal - Login</title>
     <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing:border-box;
+    } 
         /* Login Page */
         header {
             display: flex;
@@ -145,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         .login-container {
-            width: 40%;
+            width: 300px;
             margin: 50px auto;
             text-align: center;
             background: white;

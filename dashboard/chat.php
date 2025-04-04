@@ -289,9 +289,6 @@ if ($receiver_id > 0) {
     </header>
     <!-- Chat Section -->
     <main class="chat-container">
-        <div class="back-button">
-            <a href="dashboard.html">←</a>
-        </div>
     <div class="chat-container">
         <h2>Select a Department to Chat With</h2>
         <form method="POST" action="">

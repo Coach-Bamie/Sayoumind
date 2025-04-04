@@ -15,10 +15,10 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal Dashboard</title>
     <style>
-        /* Base Styles (for Desktop) */
-        
-        /* Dashboard Styles */
-        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;box-sizing: border-box;
+        }
 /* Header */
         header {
             display: flex;
@@ -167,6 +167,11 @@ if (!isset($_SESSION['username'])) {
     cursor: pointer;
     height: 40px;
     border-radius: 50%;
+}
+
+.profile a {
+    text-decoration: none;
+    color: black;
 }
 
 /* Active Link */

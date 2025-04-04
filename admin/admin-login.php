@@ -102,15 +102,10 @@ nav ul li a {
 
     <header>
         <div class="logo">
-            <img src="images/mindpal logo.png" alt="MindPal Logo">
+            <img src="../assets/images/mindpal_logo.png" alt="MindPal logo">
             <span>MindPal</span>
         </div>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Resources</a></li>
-            </ul>
         </nav>
     </header>
 
