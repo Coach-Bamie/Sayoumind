@@ -338,7 +338,7 @@ footer {
         <section class="conversation">
             <h2>Join the Conversation</h2>
             <p>Share your insights and connect with like-minded individuals. Your thoughts matter!</p>
-            <button class="discussion-btn">Start a Discussion</button>
+            <button class="discussion-btn" onclick="window.location.href='chat'">Start a Discussion</button>
         </section>
 
         <section class="comments">

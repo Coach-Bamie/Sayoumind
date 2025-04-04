@@ -3,10 +3,34 @@ session_start();
 if (!isset($_SESSION['username'])) {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
     header("Location: ../public/signin.php");
-    exit();
 }
 
+
+include '../config/mindpal.php';
+
+$user_id = $_SESSION['user_id']; 
+
+// Function to fetch all unique senders where receiver_id is the session user_id
+function getMessageSenders($conn, $user_id) {
+    $sql = "SELECT DISTINCT users.name, users.id FROM messages 
+            JOIN users ON messages.sender_id = users.id 
+            WHERE messages.receiver_id = '$user_id' ORDER BY messages.created_at DESC";
+    $result = $conn->query($sql);
+    
+    $senders = [];
+    while ($row = $result->fetch_assoc()) {
+        $senders[] = $row;
+    }
+    return $senders;
+}
+
+// Fetch senders
+$senders = getMessageSenders($conn, $user_id);
+$conn->close();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,8 +151,6 @@ if (!isset($_SESSION['username'])) {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
-}
         .chat-container {
             width: 100%;
             max-width: 400px;
@@ -215,10 +237,17 @@ if (!isset($_SESSION['username'])) {
     <div class="chat-container">
         <div class="chat" id="chat">
             <img src="../assets/images/icon_pal.png" alt="User 1">
-            <div class="chat-info">
-                <h4>iliyasu</h4>
-                <p>Hello good morning</p>
-            </div>
+            <div class="card-body sender-list chat-info">
+                        <?php if (!empty($senders)): ?>
+                            <?php foreach ($senders as $sender): ?>
+                                <a href='../dashboard/chatroom.php?receiver_id=<?php echo $sender['id']; ?>'>
+                                    <?php echo htmlspecialchars($sender['name']); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="text-center">No messages received.</p>
+                        <?php endif; ?>
+                    </div>
             <span class="time">10:26 AM</span>
             <span class="unread">1</span>
         </div>
@@ -253,10 +282,7 @@ if (!isset($_SESSION['username'])) {
             }
         });
 
-        let reply = document.getElementById('chat');
-        reply.addEventListener('click', () => {
-          window.location.href="../dashboard/chatroom.php";
-        });
+       
     </script>
 </body>
 </html>

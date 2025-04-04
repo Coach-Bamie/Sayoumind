@@ -1,21 +1,20 @@
 <?php
 ini_set('session.cookie_lifetime', 86400); // 24 hours
-session_start(); 
+session_start();
 
+include '../config/mindpal.php'; // Configuration file that contains database credentials
 
-include '../config/mindpal.php'; 
+// Ensure $conn is defined as a MySQLi connection
+$conn = new mysqli($host, $username, $password, $dbname);
 
-// Ensure $conn is defined as a PDO connection
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-  $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL
     header("Location: ../public/signin.php");  // Redirect to login page if not logged in
     exit();
 }
@@ -23,41 +22,37 @@ if (!isset($_SESSION['user_id'])) {
 // Get logged-in user's ID
 $sender_id = $_SESSION['user_id'];
 
-// Define department receiver IDs
+// Define department roles
 $departments = [
-    'Guidance' => 1, // Example: Guidance department has receiver_id 1
-    'Security' => 2, // Example: Security department has receiver_id 2
-    'Clinic' => 3    // Example: Clinic department has receiver_id 3
+    'Guidance' => 'Guidance', // Role for Guidance department
+    'Security' => 'Security', // Role for Security department
+    'Clinic' => 'Medical'     // Role for Clinic department
 ];
 
 // Initialize variables
 $selected_department = '';
-$receiver_id = 0;
-$messages = [];
+$users = [];
 
-// Handle department selection and message sending
+// Fetch user details
+$stmt = $conn->prepare("SELECT name, role FROM users WHERE id = ?");
+$stmt->bind_param("i", $sender_id);
+$stmt->execute();
+$user_result = $stmt->get_result();
+$user = $user_result->fetch_assoc();
+
+// Handle department selection
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // If a department is selected
     if (isset($_POST['department'])) {
         $selected_department = $_POST['department'];
-        $receiver_id = $departments[$selected_department];
+        $role = $departments[$selected_department];
 
-        // If a message is sent
-        if (!empty($_POST['message'])) {
-            $message = $_POST['message'];
-
-            // Insert the new message into the database
-            $stmt = $conn->prepare("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)");
-            $stmt->execute([$sender_id, $receiver_id, $message]);
-        }
+        // Fetch users based on the department role
+        $stmt = $conn->prepare("SELECT id, name FROM users WHERE role = ?");
+        $stmt->bind_param("s", $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = $result->fetch_all(MYSQLI_ASSOC);
     }
-}
-
-// Fetch messages for the selected department
-if ($receiver_id > 0) {
-    $stmt = $conn->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY created_at ASC");
-    $stmt->execute([$sender_id, $receiver_id, $receiver_id, $sender_id]);
-    $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -68,7 +63,7 @@ if ($receiver_id > 0) {
     <title>MindPal Chat</title>
     <style>
         /* Header */
-         header {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -90,91 +85,11 @@ if ($receiver_id > 0) {
             margin-right: 10px;
         }
 
-        /* Navigation */
-        nav {
-            display: flex;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 18px;
-        }
-
-        /* Hamburger Menu */
-        .menu-toggle {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .close-menu {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            position: absolute;
-            top: 15px;
-            right: 10%;
-        }
-
-        /* Responsive Navigation */
-        @media screen and (max-width: 768px) {
-            nav {
-                display: none;
-                flex-direction: column;
-                background: white;
-                position: absolute;
-                top: 60px;
-                right: 10%;
-                width: 200px;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin-bottom: 15px;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-        }
-                .profile img {
-            width: 40px;
-            cursor: pointer;
-            height: 40px;
-            border-radius: 50%;
-        }
         /* Chat Page */
         .chat-container {
             width: 80%;
             margin: 40px auto;
             text-align: center;
-        }
-
-        /* Back Button */
-        .back-button a {
-            font-size: 30px;
-            text-decoration: none;
-            color: black;
         }
 
         /* Department Selection */
@@ -204,6 +119,28 @@ if ($receiver_id > 0) {
             background: #ddd;
         }
 
+        /* User List */
+        .user-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .user-item {
+            padding: 10px;
+            background: #f7f7f7;
+            margin: 5px 0;
+            width: 70%;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .user-item:hover {
+            background: #ddd;
+        }
+
         /* Chat Box */
         .chat-box {
             width: 70%;
@@ -229,13 +166,6 @@ if ($receiver_id > 0) {
             margin-top: 5px;
         }
 
-        /* Typing Status */
-        .typing-status {
-            font-style: italic;
-            color: gray;
-            margin-bottom: 10px;
-        }
-
         /* Chat Input */
         .chat-input {
             display: flex;
@@ -259,10 +189,6 @@ if ($receiver_id > 0) {
             cursor: pointer;
         }
 
-        .Guidance, .security, .clinic {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
@@ -271,8 +197,6 @@ if ($receiver_id > 0) {
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
         </div>
-        <button class="menu-toggle">☰</button>
-        <button class="close-menu">✖</button>
         <nav>
             <ul>
                 <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
@@ -280,19 +204,17 @@ if ($receiver_id > 0) {
                 <li><a href="../community.php">Community</a></li>
             </ul>
             <div class="profile">
-            <a href="../dashboard/user_profile.php">
-                <img src="../assets/images/icon_pal.png" alt="User Profile">
-                    <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
-            </a>
-        </div>
+                <a href="../dashboard/user_profile.php">
+                    <img src="../assets/images/icon_pal.png" alt="User Profile">
+                    <p><?php echo htmlspecialchars($user['name']) . ' (' . htmlspecialchars($user['role']) . ')'; ?></p>
+                </a>
+            </div>
         </nav>
     </header>
     <!-- Chat Section -->
     <main class="chat-container">
-    <div class="chat-container">
         <h2>Select a Department to Chat With</h2>
         <form method="POST" action="">
-            
             <div class="department-buttons">
                 <button type="submit" name="department" value="Guidance" class="dept-btn guide">Guidance & Counseling</button>
                 <button type="submit" name="department" value="Security" class="dept-btn sec">Security</button>
@@ -300,72 +222,17 @@ if ($receiver_id > 0) {
             </div>
         </form>
 
-        <!-- Chat Box -->
-        <?php if ($selected_department): ?>
-            <h3>Chatting with <?php echo $selected_department; ?> Department</h3>
-
-            <div class="chat-box">
-                <?php foreach ($messages as $message): ?>
-                    <div class="chat-message">
-                        <p><?php echo htmlspecialchars($message['message']); ?></p>
-                        <span class="timestamp"><?php echo date('h:i A', strtotime($message['created_at'])); ?></span>
+        <!-- Display Users Based on Department -->
+        <?php if ($selected_department && count($users) > 0): ?>
+            <h3>Users in <?php echo htmlspecialchars($selected_department); ?> Department</h3>
+            <div class="user-list">
+                <?php foreach ($users as $user): ?>
+                    <div class="user-item" onclick="window.location.href='chatroom.php?receiver_id=<?php echo $user['id']; ?>'">
+                        <?php echo htmlspecialchars($user['name']); ?>
                     </div>
                 <?php endforeach; ?>
             </div>
-
-            <form method="POST" action="">
-                <div class="chat-input">
-                    <input type="hidden" name="department" value="<?php echo $selected_department; ?>">
-                    <input type="text" name="message" placeholder="Type a new message..." required>
-                    <button type="submit" class="send-btn">Send</button>
-                </div>
-            </form>
         <?php endif; ?>
-    </div>
-    <script>
-       // Hamburger Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const closeMenu = document.querySelector('.close-menu');
-        const nav = document.querySelector('nav');
-
-        menuToggle.addEventListener('click', () => {
-            nav.style.display = "flex";
-            menuToggle.style.display = "none";
-            closeMenu.style.display = "block";
-        });
-
-        closeMenu.addEventListener('click', () => {
-            nav.style.display = "none";
-            menuToggle.style.display = "block";
-            closeMenu.style.display = "none";
-        });
-
-               // Close menu on resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                nav.style.display = "flex";
-                menuToggle.style.display = "none";
-                closeMenu.style.display = "none";
-            } else {
-                nav.style.display = "none";
-                menuToggle.style.display = "block";
-            }
-        });
-
-        // Select all department buttons
-        const buttons = document.querySelectorAll('.dept-btn');
-        const sections = document.querySelectorAll('.Guidance, .security, .clinic');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Hide all sections first
-                sections.forEach(section => section.style.display = 'none');
-
-                // Get target chat section
-                const target = button.getAttribute('data-target');
-                document.querySelector('.' + target).style.display = 'block';
-            });
-        });
-    </script>
+    </main>
 </body>
 </html>

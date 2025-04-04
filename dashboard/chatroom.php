@@ -1,9 +1,64 @@
+<?php
+session_start();
+
+// Database connection
+include'../config/mindpal.php';
+
+$user_id = $_SESSION['user_id']; 
+$receiver_id = isset($_GET['receiver_id']) ? (int)$_GET['receiver_id'] : 0; 
+
+// Fetch messages
+$stmt = $conn->prepare("SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY created_at ASC");
+$stmt->bind_param("iiii", $user_id, $receiver_id, $receiver_id, $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$messages = [];
+while ($row = $result->fetch_assoc()) {
+    $messages[] = $row;
+}
+$stmt->close();
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - MindPal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const receiverId = <?php echo json_encode($receiver_id); ?>;
+
+            function fetchMessages() {
+                $.ajax({
+                    url: 'fetch_messages.php',
+                    method: 'GET',
+                    data: { receiver_id: receiverId },
+                    success: function(data) {
+                        $('.chat-box').html(data);
+                    }
+                });
+            }
+
+            setInterval(fetchMessages, 2000);
+
+            $('#messageForm').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'send_message.php',
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function() {
+                        $('#message').val('');
+                        fetchMessages();
+                    }
+                });
+            });
+        });
+    </script>
     <style>
         body {
     font-family: Arial, sans-serif;
@@ -185,8 +240,28 @@ h2 {
 .response-box button:hover {
     background: #3e42e0;
 }
-
+.chat-box {
+            height: 400px;
+            overflow-y: scroll;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .sent {
+            background-color: #d1e7dd;
+            text-align: left;
+        }
+        .received {
+            background-color: #f0f0f0;
+            text-align: right;
+        }
     </style>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -208,20 +283,22 @@ h2 {
         <h2>Admin Panel FUD MindPal</h2>
         <p class="subtitle">Veiw And Respond To Anonymous Messags Securly</p>
 
-        <div class="chat-box">
-            <div class="message user">
-                <span class="icon">👤</span>
-                <p>Good afternoon, please I feel unsafe,</p>
-            </div>
-            <div class="message admin">
-                <p>Express your feelings, we’re here to guide you</p>
-                <span class="icon">👤</span>
-            </div>
+        <div class="card-body chat-box">
+            <?php foreach ($messages as $row): ?>
+                <div class="message <?php echo ($row['sender_id'] == $user_id) ? 'sent' : 'received'; ?>">
+                    <strong><?php echo ($row['sender_id'] == $user_id) ? 'You' : 'User ' . $row['sender_id']; ?>:</strong>
+                    <?php echo htmlspecialchars($row['message']); ?>
+                    <br><small><?php echo $row['created_at']; ?></small>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        <div class="response-box">
-            <input type="text" placeholder="Type your response">
-            <button>Send Response</button>
+        <div class="card-footer">
+            <form id="messageForm" class="d-flex">
+                <textarea id="message" name="message" class="form-control me-2" required placeholder="Type your message..."></textarea>
+                <input type="hidden" name="receiver_id" value="<?php echo $receiver_id; ?>">
+                <button type="submit" class="btn text-white" style="background-color:#030366;">Send</button>
+            </form>
         </div>
     </div>
     <script>

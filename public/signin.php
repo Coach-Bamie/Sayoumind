@@ -21,16 +21,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];  // Store user ID in session
             $_SESSION['username'] = $user['name']; // Store username
-            $_SESSION['role'] = $user['role'];     // Store role if needed
+            $_SESSION['role'] = $user['role'];   
 
             // Check if there's a redirect URL
             if (isset($_SESSION['redirect_url'])) {
                 $redirect_url = $_SESSION['redirect_url'];
-                unset($_SESSION['redirect_url']);  // Clear redirect URL from session
-                header("Location: $redirect_url"); // Redirect to the stored URL
+                unset($_SESSION['redirect_url']);  
+                header("Location: $redirect_url"); 
             } else {
-                // Redirect to the default dashboard if no redirect URL is set
-                header("Location: /Mindpal/dashboard/dashboard.php");
+               if ($user['role'] == 'security'|| $user['role'] == 'clinic' || $user['role'] == 'consilor') {
+                    header("Location: ../admin/admin_dashboard.php");
+                } else {
+                    header("Location: ../dashboard/dashboard.php"); 
+                }
+               
             }
             exit();
         } else {

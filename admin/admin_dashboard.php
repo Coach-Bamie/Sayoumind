@@ -3,7 +3,10 @@ session_start();
 if (!isset($_SESSION['username'])) {
     $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
     header("Location: ../public/signin.php");
-    exit();
+    
+
+   
+    
 }
 
 ?>
@@ -212,7 +215,7 @@ nav ul li a.active {
         <h1>Admin MindPal Dashboard</h1>
         <p class="welcome">Welcome, <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
         <div class="quick-actions">
-            <a href="#" class="btn-action">@Department</a>
+            <a href="#" class="btn-action">Department (<?php echo $_SESSION['role'] ?>)</a>
             <a href="./messages.php" class="btn-action">Messages</a>
         </div>
     </main>
