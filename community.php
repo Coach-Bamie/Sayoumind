@@ -7,7 +7,6 @@ if (!isset($_SESSION['username'])) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +116,7 @@ header {
 
             .menu-toggle {
                 display: block;
-                margin-left: 150px;
+                margin-left: 250px;
             }
         }
 
