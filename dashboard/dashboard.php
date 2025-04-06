@@ -162,7 +162,6 @@ if (!isset($_SESSION['username'])) {
 
 /* Profile Icon */
 .profile img {
-    margin-left: 50px;
     width: 40px;
     cursor: pointer;
     height: 40px;
@@ -193,11 +192,9 @@ nav ul li a.active {
         <nav>
             <ul>
                 <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
-                <li><a href="../dashboard/message_history.php">History</a></li>
                 <li>
                     <a href="../about.php">About</a>
                 </li>
-                <li><a href="../community.php">Community</a></li>
                 <li>
                     <a href="../public/faqs.php">FAQs</a>
                 </li>

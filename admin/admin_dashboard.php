@@ -196,10 +196,6 @@ nav ul li a.active {
         <nav>
             <ul>
                 <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
-                <li><a href="../dashboard/message_history.php">History</a></li>
-                <li>
-                    <a href="../about.php">About</a>
-                </li>
                 <li><a href="../dashboard/logout.php">Log-out</a></li>
             </ul>
             <div class="profile">

@@ -60,16 +60,12 @@ $conn->close();
         });
     </script>
     <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
+       * {
+            margin: 0;
+            padding: 0;box-sizing: border-box;
+        }
 /* Header */
-header {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -115,7 +111,6 @@ header {
         /* Hamburger Menu */
         .menu-toggle {
             display: none;
-            margin-left: 150px;
             font-size: 30px;
             cursor: pointer;
             background: none;
@@ -158,6 +153,19 @@ header {
             .menu-toggle {
                 display: block;
             }
+        }
+
+        .profile img {
+            margin-left: 50px;
+            width: 40px;
+            cursor: pointer;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .profile a {
+            text-decoration: none;
+            color: black;
         }
 
 .container {
@@ -260,6 +268,30 @@ h2 {
             background-color: #f0f0f0;
             text-align: right;
         }
+
+    .card-footer .d-flex {
+        display: flex;
+        align-items: center;
+    }
+
+        .btn {
+            background-color: #7177ea; color: white; 
+            height: 40px;
+            padding: 10px 30px; 
+            border: none; 
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+    .me-2{
+        display: flex;
+        flex: 1;
+        height: 40px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        background-color:rgb(203, 242, 251);
+
+    }
     </style>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -269,13 +301,26 @@ h2 {
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
             <span>MindPal</span>
-            <button class="menu-toggle">☰</button>
-        <button class="close-menu">✖</button>
         </div>
+        <button class="menu-toggle">☰</button>
+        <button class="close-menu">✖</button>
         <nav>
             <ul>
-                <li><a href="../dashboard/message_history.php">History</a></li>
+                <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
+                <li>
+                    <a href="../about.php">About</a>
+                </li>
+                <li>
+                    <a href="../public/faqs.php">FAQs</a>
+                </li>
+                <li><a href="../dashboard/logout.php">Log-out</a></li>
             </ul>
+            <div class="profile">
+            <a href="../dashboard/user_profile.php">
+                <img src="../assets/images/icon_pal.png" alt="User Profile">
+    <?php echo $_SESSION['username'] ?? '$user'; ?></p>
+            </a>
+        </div>
         </nav>
     </header>
 
@@ -296,8 +341,8 @@ h2 {
         <div class="card-footer">
             <form id="messageForm" class="d-flex">
                 <textarea id="message" name="message" class="form-control me-2" required placeholder="Type your message..."></textarea>
-                <input type="hidden" name="receiver_id" value="<?php echo $receiver_id; ?>">
-                <button type="submit" class="btn text-white" style="background-color:#030366;">Send</button>
+                <input type="hidden" name="receiver_id" value="<?php echo $receiver_id; ?>" class="text">
+                <button type="submit" class="btn text-white">Send</button>
             </form>
         </div>
     </div>

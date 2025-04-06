@@ -18,7 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['message'])) {
 
     // Insert message into database
     $query = "INSERT INTO group_messages (sender_id, message, reply_to_message_id) VALUES ('$user_id', '$message', '$reply_to_message_id')";
-    mysqli_query($conn, $query); // Insert message into database
+    $yamo = mysqli_query($conn, $query); // Insert message into database
+     
+     if($yamo){
+       echo" <script> console.log('Message Sent') </script>";
+     }  else {
+        echo "error: ";
+     }
 
     // Respond back with a success message
     echo json_encode(['status' => 'success']);

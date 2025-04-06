@@ -28,14 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $redirect_url = $_SESSION['redirect_url'];
                 unset($_SESSION['redirect_url']);  
                 header("Location: $redirect_url"); 
-            } else {
-               if ($user['role'] == 'security'|| $user['role'] == 'clinic' || $user['role'] == 'consilor') {
+            }
+               if ($user['role'] == 'security'|| $user['role'] == 'medical' || $user['role'] == 'guidance') {
                     header("Location: ../admin/admin_dashboard.php");
+                }else if($user['role'] == 'admin'){
+                        header("Location: ../super_admin/super_admin.php");
                 } else {
                     header("Location: ../dashboard/dashboard.php"); 
                 }
-               
-            }
             exit();
         } else {
             // Invalid credentials

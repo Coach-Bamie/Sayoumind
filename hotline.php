@@ -347,9 +347,9 @@ footer {
             </div>
         </div>
         <nav class="footer-nav">
-            <a href="../about.php">About Us</a>
-            <a href="../public/contact.php">Contact Us</a>
-            <a href="../public/faqs.php">FAQs</a>
+            <a href="./about.php">About Us</a>
+            <a href="./public/contact.php">Contact Us</a>
+            <a href="./public/faqs.php">FAQs</a>
         </nav>
     </footer>
    <script>

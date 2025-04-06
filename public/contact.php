@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,12 +112,17 @@ header {
         }
 
         .profile img {
-    margin-left: 50px;
-    width: 40px;
-    cursor: pointer;
-    height: 40px;
-    border-radius: 50%;
-}
+        margin-left: 10px;
+        width: 40px;
+        cursor: pointer;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .profile a {
+        text-decoration: none;
+        color: black;
+    }
 
         /* Contact Us Page */
 .contact-container {
@@ -194,11 +208,13 @@ textarea {
             <ul>
                 <li><a href="../dashboard/dashboard.php">Dashboard</a></li>
                 <li><a href="../community.php">Community</a></li>
+                <li><a href="../about.php">About Us</a></li>
+                <li><a href="./faqs.php">FAQs</a></li>
             </ul>
              <div class="profile">
             <a href="../dashboard/user_profile.php">
                 <img src="../assets/images/icon_pal.png" alt="User Profile">
-                    <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
+                    <?php echo $_SESSION['username'] ?? '$user'; ?></p>
             </a>
         </div>
         </nav>

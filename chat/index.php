@@ -18,37 +18,33 @@ $username = $_SESSION['username']; // Fetch the username
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ment Health Chat</title>
+    <title>MindPal</title>
     <style>
         /* Base Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-        }
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
 
-        /* Dark Theme */
-        body.dark-theme {
-            background: #2c2c2c;
-            color: #f9f9f9;
-        }
-
-        /* Header */
-        header {
+header {
             display: flex;
+            width: 100%;
             justify-content: space-between;
             align-items: center;
             background: #ffffff;
             padding: 15px 10%;
             border-bottom: 1px solid #ddd;
-            transition: background-color 0.3s;
-        }
-
-        body.dark-theme header {
-            background: #333;
+            position: relative;
         }
 
         .logo {
@@ -63,38 +59,1278 @@ $username = $_SESSION['username']; // Fetch the username
             margin-right: 10px;
         }
 
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
-            gap: 15px;
+            padding: 0;
         }
 
         nav ul li {
-            display: inline-block;
+            margin: 0 15px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #333;
+            font-size: 18px;
         }
 
-        nav ul li a:hover {
-            color: #4CAF50;
-        }
-
-        .nav-toggle {
+        /* Hamburger Menu */
+        .menu-toggle {
             display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        .nav-links {
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
             display: flex;
-            gap: 15px;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
         }
 
-        .nav-links.active {
-            display: block;
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
         }
 
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        /* General Styles */
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 15px 10%;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 15px;
+            right: 10%;
+        }
         /* Chat Container */
         .chat-container {
             padding: 20px;
@@ -109,14 +1345,10 @@ $username = $_SESSION['username']; // Fetch the username
             transition: background-color 0.3s;
         }
 
-        body.dark-theme .chat-container {
-            background: #444;
-        }
-
         h2 {
             font-size: 24px;
             margin-bottom: 20px;
-            color: #4CAF50;
+            color: black;
         }
 
         .messages {
@@ -150,7 +1382,7 @@ $username = $_SESSION['username']; // Fetch the username
         }
 
         .message .message-content.sent {
-            background: #4CAF50; /* Sent messages are green */
+            background: #7177ea; /* Sent messages are green */
             color: white;
         }
 
@@ -165,7 +1397,7 @@ $username = $_SESSION['username']; // Fetch the username
 
         .message .logo-letter {
             display: inline-block;
-            background-color: #4CAF50;
+            background-color: #7177ea;
             color: white;
             border-radius: 50%;
             width: 30px;
@@ -202,16 +1434,12 @@ $username = $_SESSION['username']; // Fetch the username
 
         .input-container button {
             padding: 10px;
-            background: #4CAF50;
+            background: #7177ea;
             width: fit-content;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-
-        .input-container button:hover {
-            background: #45a049;
         }
 
         /* Send Icon */
@@ -243,46 +1471,31 @@ $username = $_SESSION['username']; // Fetch the username
             text-decoration: underline;
         }
 
-        /* Toggler Styles */
-        .toggler {
-            cursor: pointer;
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .toggler:hover {
-            background-color: #45a049;
-        }
-
         /* Mobile Styles */
-        @media screen and (max-width: 768px) {
-            header {
-                padding: 15px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-toggle {
-                display: block;
-                font-size: 20px;
-                background: none;
-                border: none;
-                color: #333;
-                cursor: pointer;
-            }
-
-            .nav-links {
+        @media  (max-width: 768px) {
+            .nav {
                 display: none;
                 flex-direction: column;
-                width: 100%;
-                gap: 10px;
+                background: white;
+                position: absolute;
+                top: 60px;
+                right: 10%;
+                width: 200px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
             }
 
-            .nav-links.active {
-                display: flex;
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-bottom: 15px;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-left: 150px;
             }
 
             .chat-container {
@@ -320,29 +1533,33 @@ $username = $_SESSION['username']; // Fetch the username
     </style>
 </head>
 <body>
-    <header>
-        <div class="d-flex">
+<header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>Ment Health</span>
+            <span>MindPal</span>
+            <button class="menu-toggle">☰</button>
+            <button class="close-menu">✖</button>
         </div>
-        <button class="nav-toggle" id="nav-toggle">&#9776;</button>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="../dashboard/dashboard.php">Dashboard</a></li>
-                <li><a href="../dashboard/message_history.php">History</a></li>
-                <li><a href="../about.php">About</a></li>
-                <li><a href="../community.php">Community</a></li>
+        <nav class="nav">
+            <ul>
+                <li>
+                    <a href="<?php
+                        if ($user['role'] == 'security'|| $user['role'] == 'medical' || $user['role'] == 'consilor') {
+                    header("Location: ../admin/admin_dashboard.php");
+                } else {
+                    header("Location: ../dashboard/dashboard.php"); 
+                }
+                    ?>">dashboard</a>
+                </li>
+                <li><a href="../about.php">About Us</a></li>
                 <li><a href="../public/faqs.php">FAQs</a></li>
-                <li><a href="../dashboard/logout.php">Log-out</a></li>
             </ul>
-        </nav>
         </div>
-        <button class="toggler" id="theme-toggle">Switch to Dark Mode</button>
+        </nav>
     </header>
 
     <div class="chat-container">
-        <h2>Chat with Us</h2>
+        <h2>Chat with Others</h2>
         <div id="reply-preview">
             <strong>Replying to:</strong>
             <div id="reply-preview-text"></div>
@@ -352,12 +1569,11 @@ $username = $_SESSION['username']; // Fetch the username
 
         <form id="message-form" class="input-container">
             <textarea name="message" rows="3" placeholder="Type your message..." required></textarea>
-            <button type="submit"><i class="send-icon">&#x2709;</i></button> <!-- Paper airplane icon -->
+            <button type="submit"><i class="send-icon">Send</i></button> <!-- Paper airplane icon -->
         </form>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script>
         $(document).ready(function() {
             let replyingToMessageId = null;
@@ -442,6 +1658,121 @@ $username = $_SESSION['username']; // Fetch the username
             // Initial message fetch
             fetchMessages();
         });
+    </script>
+
+    <script>
+       // Hamburger Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.style.display = "flex";
+            menuToggle.style.display = "none";
+            closeMenu.style.display = "block";
+        });
+
+        closeMenu.addEventListener('click', () => {
+            nav.style.display = "none";
+            menuToggle.style.display = "block";
+            closeMenu.style.display = "none";
+        });
+
+               // Close menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                nav.style.display = "flex";
+                menuToggle.style.display = "none";
+                closeMenu.style.display = "none";
+            } else {
+                nav.style.display = "none";
+                menuToggle.style.display = "block";
+            }
+        });
+
+        // $(document).ready(function() {
+        //     let replyingToMessageId = null;
+
+        //     // Toggle Theme
+        //     $('#theme-toggle').on('click', function() {
+        //         $('body').toggleClass('dark-theme');
+        //         const theme = $('body').hasClass('dark-theme') ? 'Dark' : 'Light';
+        //         $('#theme-toggle').text(`Switch to ${theme} Mode`);
+        //     });
+
+        //     // Toggle Navigation Menu for Mobile
+        //     $('#nav-toggle').on('click', function() {
+        //         $('.nav-links').toggleClass('active');
+        //     });
+
+        //     // Fetch messages every 3 seconds using AJAX
+        //     function fetchMessages() {
+        //         $.ajax({
+        //             url: 'fetch_messages.php', // Request the fetch messages file
+        //             method: 'GET',
+        //             dataType: 'json',
+        //             success: function(response) {
+        //                 $('#messages').empty(); // Clear existing messages
+        //                 response.forEach(function(message) {
+        //                     const messageClass = (message.sender_id == <?php //echo $user_id; ?>) ? 'sent' : 'received';
+        //                     const replyIndicator = message.replied_message ? `<div class="reply-indicator">Replying to: ${message.replied_message}</div>` : '';
+        //                     const userLogo = (message.name && message.name.length > 0) ? message.name.substring(0, 2).toUpperCase() : 'XX'; // Default to 'XX' if name is null or empty
+
+                            
+        //                     $('#messages').append(`
+        //                         <div class="message ${messageClass}" data-message-id="${message.id}">
+        //                             <div class="username">
+        //                                 <span class="logo-letter">${userLogo}</span> ${message.name}
+        //                             </div>
+        //                             ${replyIndicator}
+        //                             <div class="message-content ${messageClass}">${message.message}</div>
+        //                             <button class="reply-btn" data-message-id="${message.id}">Reply</button>
+        //                         </div>
+        //                     `);
+        //                 });
+        //             }
+        //         });
+        //     }
+
+        //     // Handle reply button clicks
+        //     $('#messages').on('click', '.reply-btn', function() {
+        //         const messageId = $(this).data('message-id');
+        //         const messageText = $(this).closest('.message').find('.message-content').text();
+        //         replyingToMessageId = messageId;
+        //         $('#reply-preview').show();
+        //         $('#reply-preview-text').text(messageText);
+        //     });
+
+        //     // Cancel reply
+        //     $('#cancel-reply').on('click', function() {
+        //         replyingToMessageId = null;
+        //         $('#reply-preview').hide();
+        //     });
+
+        //     // Handle message form submission
+        //     $('#message-form').on('submit', function(e) {
+        //         e.preventDefault();
+        //         const message = $('textarea[name="message"]').val();
+
+        //         $.ajax({
+        //             url: 'send_message.php', // Send message request
+        //             method: 'POST',
+        //             data: {
+        //                 message: message,
+        //                 reply_to: replyingToMessageId
+        //             },
+        //             success: function() {
+        //                 fetchMessages();
+        //                 $('textarea[name="message"]').val('');
+        //                 $('#reply-preview').hide();
+        //                 replyingToMessageId = null;
+        //             }
+        //         });
+        //     });
+
+        //     // Initial message fetch
+        //     fetchMessages();
+        // });
     </script>
 </body>
 </html>

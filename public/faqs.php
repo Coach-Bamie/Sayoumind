@@ -170,7 +170,6 @@ header {
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="../public/index.php">Home</a></li>
                 <li>
                     <a href="../dashboard/dashboard.php">Dashboard</a>
                 </li>
@@ -178,7 +177,6 @@ header {
                     <a href="../about.php">About</a>
                 </li>
                 <li><a href="../community.php">Community</a></li>
-                <li><a href="../public/contact.php">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -205,7 +203,7 @@ header {
             </details>
         </div>
 
-        <button class="contact-btn">📩 For More - Contact us</button>
+        <button class="contact-btn" onclick="window.location.href='./contact.php'">📩 For More - Contact us</button>
     </main>
     <script>
         // Hamburger Menu Toggle

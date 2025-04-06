@@ -340,25 +340,6 @@ footer {
             <p>Share your insights and connect with like-minded individuals. Your thoughts matter!</p>
             <button class="discussion-btn" onclick="window.location.href='chat'">Start a Discussion</button>
         </section>
-
-        <section class="comments">
-            <div class="comment-box">
-                <input type="text" placeholder="What do you think about this?">
-                <button class="send-btn">Send</button>
-            </div>
-            <div class="comment">
-                <strong>Andrew - Oct 10, 2023</strong>
-                <p>This is a great way to address the issue. Nevertheless, I think certain aspects could be enhanced to enrich the user experience even more.</p>
-            </div>
-            <div class="comment">
-                <strong>Sarah - Oct 10, 2023</strong>
-                <p>I'm curious about the integration of chatbot interactions into the broader customer support system.</p>
-            </div>
-            <div class="comment">
-                <strong>John - Oct 9, 2023</strong>
-                <p>Benjamin, I share your concerns about the potential for biased training data shaping the chatbot’s responses. To mitigate this, it's crucial to implement a robust update mechanism that continually curates and expands the chatbot’s knowledge base.</p>
-            </div>
-        </section>
     </main>
      <!-- Footer -->
     <footer>
