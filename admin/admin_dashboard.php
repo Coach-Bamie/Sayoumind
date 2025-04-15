@@ -195,7 +195,6 @@ nav ul li a.active {
         <button class="close-menu">✖</button>
         <nav>
             <ul>
-                <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
                 <li><a href="../dashboard/logout.php">Log-out</a></li>
             </ul>
             <div class="profile">

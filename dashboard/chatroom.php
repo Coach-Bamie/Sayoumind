@@ -169,13 +169,19 @@ $conn->close();
         }
 
 .container {
-    width: 60%;
-    margin: 50px auto;
+    width: 100%;
+    margin: 100px auto;
 }
 
-h2 {
+.container h2 {
+    padding-bottom: 20px;
+    text-align: center;
     font-size: 22px;
     font-weight: bold;
+}
+
+.container p {
+    text-align: center;
 }
 
 .subtitle {
@@ -270,6 +276,7 @@ h2 {
         }
 
     .card-footer .d-flex {
+        margin-top: 20px;
         display: flex;
         align-items: center;
     }
@@ -285,8 +292,11 @@ h2 {
 
     .me-2{
         display: flex;
+        align-items: center;
         flex: 1;
         height: 40px;
+        padding-top: 10px;
+        padding-left: 20px;
         border: 1px solid lightgray;
         border-radius: 10px;
         background-color:rgb(203, 242, 251);
@@ -306,10 +316,6 @@ h2 {
         <button class="close-menu">✖</button>
         <nav>
             <ul>
-                <li><a href="../dashboard/dashboard.php" class="active">Dashboard</a></li>
-                <li>
-                    <a href="../about.php">About</a>
-                </li>
                 <li>
                     <a href="../public/faqs.php">FAQs</a>
                 </li>

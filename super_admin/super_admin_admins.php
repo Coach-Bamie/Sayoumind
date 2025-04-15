@@ -24,9 +24,19 @@ $adminList = getAdminList($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal Dashboard</title>
     <style>
-        /* Base Styles (for Desktop) */
-        /* Dashboard Styles */
-        /* General Styling */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+            /* General Styles */
+    body {
+        font-family: Arial, sans-serif;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        background-color: #ffffff;
+    }
         header {
             display: flex;
             justify-content: space-between;
@@ -72,10 +82,10 @@ $adminList = getAdminList($conn);
         .adminlist .admins {
             display: grid;
             grid-template-columns: 50px 1fr 1fr 100px;
-            width: 90%;
+            width: 100%;
             height: 70px;
             background: #ffffff;
-            margin: 40px 30px;
+            margin: 40px 10px;
             border-radius: 20px;
         }
 
@@ -89,9 +99,10 @@ $adminList = getAdminList($conn);
 
         .adminlist .admins .name {
             margin-left: 10px;
+            margin-top: 10px;
             display: flex;
             align-items: center;
-            padding-left: 20px;
+            padding: auto;
         }
 
         .adminlist .admins .remove {

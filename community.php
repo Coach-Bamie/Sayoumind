@@ -116,7 +116,7 @@ header {
 
             .menu-toggle {
                 display: block;
-                margin-left: 250px;
+                margin-left: 150px;
             }
         }
 

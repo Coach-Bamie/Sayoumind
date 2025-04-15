@@ -1543,15 +1543,10 @@ header {
         <nav class="nav">
             <ul>
                 <li>
-                    <a href="<?php
-                        if ($user['role'] == 'security'|| $user['role'] == 'medical' || $user['role'] == 'consilor') {
-                    header("Location: ../admin/admin_dashboard.php");
-                } else {
-                    header("Location: ../dashboard/dashboard.php"); 
-                }
-                    ?>">dashboard</a>
+                    <a href="../dashboard/dashboard.php">dashboard</a>
                 </li>
-                <li><a href="../about.php">About Us</a></li>
+                <li><a href="../about.php">About Us</a></li
+                <li><a href="../public/Contact.php>Contact Us</a></li>
                 <li><a href="../public/faqs.php">FAQs</a></li>
             </ul>
         </div>

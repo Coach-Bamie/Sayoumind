@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // Save the current URL 
+    header("Location: ../public/signin.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

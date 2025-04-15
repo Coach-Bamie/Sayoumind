@@ -222,7 +222,7 @@ textarea {
     <!-- Contact Us Section -->
     <main class="contact-container">
         <h2>Need Assistance?</h2>
-        <p>Our support is always there for you. Reach out with your questions and we'll respond ASAP.</p>
+        <p>Our support is always there for you. Reach out with your questions and we'll respond.</p>
         
         <div class="contact-box">
             <h3>Contact Us</h3>

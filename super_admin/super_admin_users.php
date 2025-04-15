@@ -27,6 +27,20 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindPal Dashboard</title>
     <style>
+    
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+                /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            background-color: #ffffff;
+        }
         /* Base Styles (for Desktop) */
         header {
             display: flex;
@@ -59,55 +73,6 @@ $conn->close();
             font-size: 28px;
             color: #333;
         }
-
-        .userlist {
-            width: 100%;
-            height: 500px;
-            overflow-y: scroll;
-            background-color: #ddd;
-            margin-top: 50px;
-            border-radius: 50px;
-            display: block;
-        }
-
-        .userlist .user {
-            display: grid;
-            grid-template-columns: 50px 1fr 100px;
-            width: 70%;
-            height: 70px;
-            background: #ffffff;
-            margin: 40px 30px;
-            border-radius: 20px;
-        }
-
-        .userlist .user .image {
-            margin: auto 10px;
-        }
-
-        .userlist .user .image img {
-            height: 50px;
-        }
-
-        .userlist .user .name {
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            padding-left: 20px;
-        }
-
-        .userlist .user .remove {
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-        }
-
-        .userlist .user .remove button {
-            background: #ddd;
-            border: none;
-            padding: 10px 18px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
         .userlist {
             width: 100%;
             height: 500px;
@@ -120,11 +85,11 @@ $conn->close();
 
         .userlist .admins {
             display: grid;
-            grid-template-columns: 50px 1fr 1fr 100px;
-            width: 90%;
+            grid-template-columns: 50px 1fr 100px;
+            width: 100%;
             height: 70px;
             background: #ffffff;
-            margin: 40px 30px;
+            margin: 40px 20px;
             border-radius: 20px;
         }
 
@@ -137,7 +102,7 @@ $conn->close();
         }
 
         .userlist .admins .name {
-            margin-left: 10px;
+            margin: auto auto;
             display: flex;
             align-items: center;
             padding-left: 20px;
@@ -182,9 +147,6 @@ $conn->close();
                         </div>
                         <div class="name">
                             <h3>' . htmlspecialchars($user['name']) . '</h3>
-                        </div>
-                        <div class="department">
-                            <h4>' . htmlspecialchars($user['role']) . '</h4>
                         </div>
                         <div class="remove">
                             <button class="remove_btn">Remove</button>

@@ -186,20 +186,20 @@ header {
         <h2>FAQs</h2>
         <div class="faq-list">
             <details>
-                <summary>How to use MindPal?</summary>
-                <p>MindPal is a platform designed to provide support and resources...</p>
+                <summary>How do I contact a department using MindPal?</summary>
+                <p>You can simply tap on the department you want to talk to (Security, Medical, Counseling, or SUG), and start typing your message. The right team will receive and respond to your message directly...</p>
             </details>
             <details>
-                <summary>How to use MindPal?</summary>
-                <p>MindPal helps you connect with professionals for support...</p>
+                <summary>Do I need to sign up before using MindPal?</summary>
+                <p>Yes, all users must create an account to use the platform. This helps route messages properly and ensures only verified students can access the system...</p>
             </details>
             <details>
-                <summary>How to use MindPal?</summary>
-                <p>You can navigate through different sections to find...</p>
+                <summary>Are my messages private?</summary>
+                <p>Yes. Your messages are only visible to the department you're contacting. No other students or departments can see them. Your privacy is protected...</p>
             </details>
             <details>
-                <summary>How to use MindPal?</summary>
-                <p>MindPal offers a variety of tools and resources to help you...</p>
+                <summary>What happens when I use the emergency call button?</summary>
+                <p>The emergency call button immediately send a call to the selected department — whether it's Security, Medical, Fire Service, or the SUG President — to respond to your urgent issue as quickly as possible...</p>
             </details>
         </div>
 

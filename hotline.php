@@ -297,6 +297,9 @@ footer {
         </div>
         </nav>
     </header>
+    <marquee behavior="scroll" direction="left" scrollamount="8" style="background-color: red; color: white; padding: 10px; font-weight: bold; font-size: 18px;">
+    🚨 Emergency Notice: Use the hotline buttons below for immediate contact with Security, Medical, Fire Service, or SUG President. Assistance is available 24/7.
+</marquee>
 
     <!-- Hotlines Section -->
     <main class="hotlines-container">

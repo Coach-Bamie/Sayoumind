@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* Sign-Up Page */
         .signup-container {
-            width: 40%;
+            width: 80%;
             margin: 50px auto;
             text-align: center;
             background: white;

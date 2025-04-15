@@ -161,7 +161,8 @@ $conn->close();
     }
 
     .chat-container {
-        width: 100%;
+        width: 90%;
+        margin: 10px auto;
         display: flex;
         flex-direction: column;
         background-color: #1e1e1e;
@@ -200,9 +201,11 @@ $conn->close();
     }
 
     .chat-info h4 {
+        text-decoration: none;
         margin: 0;
         font-size: 16px;
-        color: black;
+        color: white;
+        border-bottom: none;
     }
 
     .chat-info p {
@@ -214,7 +217,9 @@ $conn->close();
 
     .time {
         font-size: 12px;
-        color: #888;
+        color: white;
+        text-decoration: none;
+        list-style-type: none;
     }
 
     .unread {
@@ -238,7 +243,6 @@ $conn->close();
     <nav>
         <ul>
             <li><a href="./admin_dashboard.php" class="active">Dashboard</a></li>
-            <li><a href="../about.php">About</a></li>
             <li><a href="../dashboard/logout.php">Log-out</a></li>
         </ul>
         <div class="profile">
@@ -260,7 +264,6 @@ $conn->close();
                       <img src="../assets/images/icon_pal.png" alt="User 1">
                       <div class="chat-info">
                           <h4><?php echo htmlspecialchars($sender['name']); ?></h4>
-                          <p>Last message</p>
                       </div>
                       <div class="time">
                           <?php echo date('Y-m-d H:i:s', strtotime($sender['created_at'])); ?>

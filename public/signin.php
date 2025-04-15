@@ -235,6 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button class="button" type="submit">🔓 Log In</button>
         </form>
         <p><a href="../change_pass.php">Forgot your password?</a></p>
+        <p>Don't have an account? <a href="./signup.php">Register</a></p>
     </main>
     <script>
         // Hamburger Menu Toggle
