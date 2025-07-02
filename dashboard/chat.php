@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Chat</title>
+    <title>Sayoumind Chat</title>
     <style>
        * {
             margin: 0;
@@ -466,7 +466,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
         </div>
         <button class="menu-toggle">☰</button>
         <button class="close-menu">✖</button>
