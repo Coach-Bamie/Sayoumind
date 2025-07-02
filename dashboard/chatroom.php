@@ -26,7 +26,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - MindPal</title>
+    <title>Admin Panel - Sayoumind</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -331,7 +331,7 @@ $conn->close();
     </header>
 
     <div class="container">
-        <h2>Admin Panel FUD MindPal</h2>
+        <h2>Admin Panel Sayoumind</h2>
         <p class="subtitle">Veiw And Respond To Anonymous Messags Securly</p>
 
         <div class="card-body chat-box">
