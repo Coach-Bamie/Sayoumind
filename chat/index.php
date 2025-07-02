@@ -18,7 +18,7 @@ $username = $_SESSION['username']; // Fetch the username
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal</title>
+    <title>Sayoumind</title>
     <style>
         /* Base Styles */
         * {
@@ -1536,14 +1536,14 @@ header {
 <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
             <button class="menu-toggle">☰</button>
             <button class="close-menu">✖</button>
         </div>
         <nav class="nav">
             <ul>
                 <li>
-                    <a href="../dashboard/dashboard.php">dashboard</a>
+                    <a href="../dashboard/dashboard.php">Dashboard</a>
                 </li>
                 <li><a href="../about.php">About Us</a></li
                 <li><a href="../public/Contact.php>Contact Us</a></li>
