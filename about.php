@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal - About Us</title>
+    <title>Sayoumind - About Us</title>
     <style>
   * {
     margin: 0;
@@ -276,7 +276,7 @@ footer {
     <header>
         <div class="logo">
             <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
             <button class="menu-toggle">☰</button>
         <button class="close-menu">✖</button>
         </div>
@@ -292,7 +292,7 @@ footer {
     <!-- About Us Section -->
     <main class="about-container">
         <h2>About us</h2>
-        <p style="font-size: 20px">At MindPal, we strive to push the boundaries of cognitive enhancement through innovative technology and personalized solutions.</p>
+        <p style="font-size: 20px">At Sayoumind, we strive to push the boundaries of cognitive enhancement through innovative technology and personalized solutions.</p>
             <div class="about-text">
                 <div class="one">
                     <div class="text">
@@ -330,7 +330,7 @@ footer {
                 <div class="one">
                     <div class="text">
                        <h3>Integrity</h3>
-                <p>MindPal's built on values of transparency and honesty, ensuring our clients receive clear insights and ethical solutions.</p>
+                <p>Sayoumind's built on values of transparency and honesty, ensuring our clients receive clear insights and ethical solutions.</p>
                     </div>
                     <div class="img">
                         <img src="./assets/images/Integrity.jpeg" alt="">
@@ -343,18 +343,6 @@ footer {
         <!-- Team Section -->
         <h2>Meet the Team</h2>
         <div class="team-container">
-            <div class="team-member">
-                <img src="./assets/images/Iliyasu.png" alt="Team Member 1">
-                <p><strong>Iliyasu Abdurrazaq Iliyasu</strong><br>Project Manager <br />/Front-End-Dev </p>
-            </div>
-            <div class="team-member">
-                <img src="./assets/images/yamor.png" alt="Team Member 2">
-                <p><strong>Jamilu Yusuf Musa (Yamo JR)</strong><br>Back End Dev</p>
-            </div>
-            <div class="team-member">
-                <img src="./assets/images/khadijah.png" alt="Team Member 3">
-                <p><strong>Khadija Ibrahim</strong><br>UI Designer</p>
-            </div>
             <div class="team-member">
                 <img src="./assets/images/master_craft.png" alt="Team Member 4">
                 <p><strong>Moses Pius</strong><br>Back End Dev</p>
@@ -371,7 +359,7 @@ footer {
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-                <span>MindPal</span>
+                <span>Sayoumind</span>
             </div>
             <div class="newsletter">
                 <input type="email" placeholder="Input your email">
