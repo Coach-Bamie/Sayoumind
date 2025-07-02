@@ -4,7 +4,7 @@
 SAYOUMIND is a digital support platform that centralizes access to critical community services like medical help, security response, and mental wellness support. Built for Nigerian, it offers a simple, responsive, and accessible interface that helps students connect with the right help — fast.
 
 ## Key Features
-- Emergency call button (Security, Medical, SUG President, Fire Service)
+- Emergency call button (Security, Medical,Fire Service)
 - Guided Help Request (routes messages to relevant departments)
 - Department-specific dashboards for tracking cases
 - Mobile-friendly design (responsive on all devices)
