@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal - Settings</title>
+    <title>User - Settings</title>
    <style>
 * {
   margin: 0;
@@ -218,7 +218,7 @@ if (!isset($_SESSION['username'])) {
     <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
              <button class="menu-toggle">☰</button>
         <button class="close-menu">✖</button>
         </div>
@@ -259,7 +259,7 @@ if (!isset($_SESSION['username'])) {
             <img src="../assets/images/updatePro.jpg" alt="Update Profile">
             <div class="update-text">
                 <h3>Update Your Profile</h3>
-                <p>Keep your profile up-to-date to make the most of MindPal. Easily edit your information or save changes with a simple tap.</p>
+                <p>Keep your profile up-to-date to make the most of Sayoumind. Easily edit your information or save changes with a simple tap.</p>
                 <button class="update-btn">Update Profile</button>
             </div>
         </div>
