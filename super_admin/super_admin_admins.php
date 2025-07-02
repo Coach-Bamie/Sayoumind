@@ -22,7 +22,7 @@ $adminList = getAdminList($conn);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Dashboard</title>
+    <title>Sayoumind Dashboard</title>
     <style>
     * {
         margin: 0;
@@ -164,13 +164,13 @@ $adminList = getAdminList($conn);
    <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
         </div>
     </header>
     <!-- Dashboard Content -->
     <main class="dashboard">
-        <h1>Super Admin MindPal Dashboard</h1>
-        <p>MindPal Admins List</p>
+        <h1>Super Admin Sayoumind Dashboard</h1>
+        <p>Sayoumind Admins List</p>
         <div class="adminlist list">
             <?php
             if (empty($adminList)) {
