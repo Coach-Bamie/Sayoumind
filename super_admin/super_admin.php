@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Dashboard</title>
+    <title>Sayoumind Dashboard</title>
     <style>
         /* Base Styles (for Desktop) */
         
@@ -99,12 +99,12 @@ if (!isset($_SESSION['username'])) {
    <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
         </div>
     </header>
     <!-- Dashboard Content -->
     <main class="dashboard">
-        <h1>Super Admin MindPal Dashboard</h1>
+        <h1>Super Admin Sayoumind Dashboard</h1>
         <p>Monitor, track, add, remove, diactive user and admin</p>
         <p class="welcome">Welcome, <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
         <div class="quick-actions">
