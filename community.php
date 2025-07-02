@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Community</title>
+    <title>Sayoumind Community</title>
     <link rel="stylesheet" href="styles.css">
     <style>
 * {
@@ -311,7 +311,7 @@ footer {
    <header>
         <div class="logo">
             <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
             <button class="menu-toggle">☰</button>
             <button class="close-menu">✖</button>
         </div>
@@ -346,7 +346,7 @@ footer {
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-                <span>MindPal</span>
+                <span>Sayoumind</span>
             </div>
             <div class="newsletter">
                 <input type="email" placeholder="Input your email">
