@@ -25,7 +25,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Dashboard</title>
+    <title>Sayoumind Dashboard</title>
     <style>
     
     * {
@@ -132,8 +132,8 @@ $conn->close();
     </header>
     <!-- Dashboard Content -->
     <main class="dashboard">
-        <h1>Super Admin MindPal Dashboard</h1>
-        <p>MindPal Users List</p>
+        <h1>Super Admin Sayoumind Dashboard</h1>
+        <p>Sayoumind Users List</p>
         <div class="userlist">
         <?php
             if (empty($users)) {
