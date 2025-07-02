@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal Dashboard</title>
+    <title>Sayoumind Dashboard</title>
     <style>
         /* Base Styles (for Desktop) */
         
@@ -189,7 +189,7 @@ nav ul li a.active {
     <header>
         <div class="logo">
             <img src="../assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
         </div>
         <button class="menu-toggle">☰</button>
         <button class="close-menu">✖</button>
@@ -207,7 +207,7 @@ nav ul li a.active {
     </header>
     <!-- Dashboard Content -->
     <main class="dashboard">
-        <h1>Admin MindPal Dashboard</h1>
+        <h1>Admin Sayoumind Dashboard</h1>
         <p class="welcome">Welcome, <?php echo $_SESSION['username'] ?? 'Guest'; ?></p>
         <div class="quick-actions">
             <a href="#" class="btn-action">Department (<?php echo $_SESSION['role'] ?>)</a>
