@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal - Hotlines</title>
+    <title>Sayoumind - Hotlines</title>
     <style>
 * {
     margin: 0;
@@ -305,7 +305,7 @@ footer {
     <main class="hotlines-container">
         <div class="hotline">
             <img src="./assets/images/fire service.jpeg" alt="Fire Service">
-            <h3>FUD FIRE SERVICE</h3>
+            <h3>SayoumindSERVICE</h3>
             <p>Available 24/7</p>
             <button class="call-btn">
                 <a href="tel:+234703877789">CALL NOW</a>
