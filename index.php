@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindPal - Your Campus Support Companion</title>
+    <title>Sayoumind - Your Campus Support Companion</title>
     <style>
 * {
     margin: 0;
@@ -260,7 +260,7 @@ footer {
     <header>
         <div class="logo">
             <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-            <span>MindPal</span>
+            <span>Sayoumind</span>
             <button class="menu-toggle">☰</button>
             <button class="close-menu">✖</button>
         </div>
@@ -279,7 +279,7 @@ footer {
 
     <!-- Hero Section -->
     <main class="hero">
-        <h1>Welcome to MindPal</h1>
+        <h1>Welcome to Sayoumind</h1>
         <img src="./assets/images/mindpal_cover.jpg" alt="Illustration">
         <p>Your Trusted Companion</p>
         <a href="../public/signin.php" class="btn-primary">Get Started</a>
@@ -290,7 +290,7 @@ footer {
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="./assets/images/mindpal_logo.png" alt="MindPal Logo">
-                <span>MindPal</span>
+                <span>Sayoumind</span>
             </div>
             <div class="newsletter">
                 <input type="email" placeholder="Input your email">
